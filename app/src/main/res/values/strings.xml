@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestingApp</string>
+    <string name="id">ID 123 456 789</string>
+    <string name="menu">Menu</string>
+    <string name="grade">4.7</string>
+    <string name="name">Alice Peterson</string>
+    <string name="countries">Russian, English, German</string>
+
 </resources>

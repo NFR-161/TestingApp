@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="some_id">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+
+        <item name="android:letterSpacing">
+            -0.04
+        </item>
+
+        <item name="android:textColor">
+            #DEFFFFFF
+        </item>
+
+    </style>
+
+    <style name="page_title">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:letterSpacing">
+            -0.03
+        </item>
+
+        <item name="android:textColor">
+            #DEFFFFFF
+        </item>
+
+    </style>
+
+    <style name="InterRegularTextAppearance">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">
+            #DEFFFFFF
+        </item>
+    </style>
+    <style name="countries">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:letterSpacing">
+            -0.02
+        </item>
+
+        <item name="android:textColor">
+            #DEFFFFFF
+        </item>
+
+    </style>
+
+</resources>
