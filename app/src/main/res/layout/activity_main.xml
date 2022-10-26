@@ -117,6 +117,65 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/language" />
 
+        <TextView
+            android:id="@+id/NYC"
+            android:layout_width="230dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="74dp"
+            android:gravity="top"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/NYC"
+            android:textAppearance="@style/countries"
+            android:translationY="-0.53sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/map"
+            app:layout_constraintTop_toBottomOf="@+id/countries" />
+
+        <TextView
+            android:id="@+id/Choose1"
+            android:layout_width="54dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/choose"
+            android:textAppearance="@style/icon_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/countries"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+        <TextView
+            android:id="@+id/Choose2"
+            android:layout_width="54dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/choose"
+            android:textAppearance="@style/icon_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/NYC"
+            app:layout_constraintTop_toBottomOf="@+id/Choose1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            tools:itemCount="4"
+            tools:listitem="@layout/upper_block_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/NYC" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
