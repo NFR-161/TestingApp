@@ -7,4 +7,6 @@
     <string name="countries">Russian, English, German</string>
     <string name="NYC">New York city, USA</string>
     <string name="choose">Choose</string>
+    <string name="question">QUESTIONNAIRES</string>
+    <string name="people">PEOPLE</string>
 </resources>
