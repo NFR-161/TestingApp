@@ -165,13 +165,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
-            android:layout_width="match_parent"
+            android:layout_width="379dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NYC"
@@ -182,7 +182,9 @@
             android:id="@+id/BtQuestion"
             android:layout_width="185.5dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="4dp"
             android:backgroundTint="#121212"
             android:fontFamily="@font/inter_regular"
             android:gravity="center_horizontal|top"
@@ -195,16 +197,21 @@
             android:text="@string/question"
             android:textColor="@color/second_white"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/recycler"
+            app:layout_constraintEnd_toStartOf="@+id/BtPeople"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler"
             app:strokeColor="#9575CD"
             app:strokeWidth="1dp" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/BtPeople"
             android:layout_width="185.5dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="#121212"
             android:fontFamily="@font/inter_regular"
             android:gravity="center_horizontal|top"
@@ -217,10 +224,61 @@
             android:text="@string/people"
             android:textColor="@color/second_white"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/recycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/BtQuestion"
             app:layout_constraintTop_toBottomOf="@+id/recycler"
             app:strokeColor="#9575CD"
             app:strokeWidth="1dp" />
+
+
+        <TextView
+            android:id="@+id/about_me"
+            android:layout_width="324dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="top"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/about_me"
+            android:textColor="#99FFFFFF"
+            android:textSize="12sp"
+            android:translationY="-0.74sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtQuestion" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sectionEnterTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:boxBackgroundColor="#121212"
+            app:counterEnabled="true"
+            app:counterMaxLength="300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_me"
+            tools:ignore="RtlSymmetry">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="top"
+                android:lineSpacingExtra="5sp"
+                android:paddingStart="0dp"
+                android:paddingTop="0dp"
+                android:textColor="@color/second_white"
+                android:textSize="16sp"
+                android:translationY="-2.32sp"
+                app:counterMaxLength="300"
+                tools:text="@string/edit_text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
