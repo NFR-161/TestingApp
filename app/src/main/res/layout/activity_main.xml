@@ -255,6 +255,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
+            android:paddingEnd="-17.5dp"
             app:boxBackgroundColor="#121212"
             app:counterEnabled="true"
             app:counterMaxLength="300"
@@ -268,6 +269,7 @@
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="top"
                 android:lineSpacingExtra="5sp"
@@ -286,14 +288,49 @@
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:theme="@style/SCBSwitch"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
             android:checked="true"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            android:theme="@style/SCBSwitch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
+
+        <TextView
+            android:id="@+id/dream"
+            android:layout_width="296dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:text="@string/dream_and_get"
+            android:textColor="@color/second_white"
+            android:textSize="16sp"
+            android:translationY="-2.32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="379dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="-1sp"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/wish"
+            android:backgroundTint="#121212"
+            app:strokeColor="#9575CD"
+            app:strokeWidth="1dp"
+            android:textSize="14sp"
+            android:textColor="@color/second_white"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dream" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
