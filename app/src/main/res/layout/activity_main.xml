@@ -289,12 +289,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="15dp"
             android:checked="true"
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:theme="@style/SCBSwitch"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/dream"
             app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
 
         <TextView
@@ -313,23 +315,39 @@
             app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/BtWish"
             android:layout_width="379dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#121212"
+            android:fontFamily="@font/inter_regular"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
-            android:fontFamily="@font/inter_regular"
             android:text="@string/wish"
-            android:backgroundTint="#121212"
-            app:strokeColor="#9575CD"
-            app:strokeWidth="1dp"
-            android:textSize="14sp"
             android:textColor="@color/second_white"
-            android:layout_marginEnd="16dp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dream" />
+            app:layout_constraintTop_toBottomOf="@id/dream"
+            app:strokeColor="#9575CD"
+            app:strokeWidth="1dp" />
+
+        <TextView
+            android:id="@+id/wishes"
+            android:layout_width="379dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="top"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="1sp"
+            android:textColor="#9575CD"
+            android:translationY="-0.53sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtWish" />
 
 
 
