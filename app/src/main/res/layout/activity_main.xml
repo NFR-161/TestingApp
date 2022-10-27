@@ -164,19 +164,20 @@
             app:layout_constraintTop_toBottomOf="@+id/Choose1" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="379dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/upper_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
+            app:layout_constraintDimensionRatio="3:1"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NYC"
             tools:itemCount="4"
-            tools:listitem="@layout/upper_block_items" />
+            tools:listitem="@layout/items_for_account" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/BtQuestion"
@@ -185,7 +186,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
-            android:backgroundTint="#121212"
+            android:backgroundTint="@color/dark_grey"
             android:fontFamily="@font/inter_regular"
             android:gravity="center_horizontal|top"
             android:letterSpacing="-0.02"
@@ -200,8 +201,8 @@
             app:layout_constraintEnd_toStartOf="@+id/BtPeople"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler"
-            app:strokeColor="#9575CD"
+            app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
+            app:strokeColor="@color/purple"
             app:strokeWidth="1dp" />
 
 
@@ -212,7 +213,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#121212"
+            android:backgroundTint="@color/dark_grey"
             android:fontFamily="@font/inter_regular"
             android:gravity="center_horizontal|top"
             android:letterSpacing="-0.02"
@@ -226,8 +227,8 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/BtQuestion"
-            app:layout_constraintTop_toBottomOf="@+id/recycler"
-            app:strokeColor="#9575CD"
+            app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
+            app:strokeColor="@color/purple"
             app:strokeWidth="1dp" />
 
 
@@ -257,7 +258,7 @@
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             android:paddingEnd="-17.5dp"
-            app:boxBackgroundColor="#121212"
+            app:boxBackgroundColor="@color/dark_grey"
             app:counterEnabled="true"
             app:counterMaxLength="300"
             app:layout_constraintEnd_toEndOf="parent"
@@ -271,6 +272,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/main"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="top"
                 android:lineSpacingExtra="5sp"
@@ -290,7 +292,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="16dp"
             android:checked="true"
             android:minWidth="48dp"
             android:minHeight="48dp"
@@ -323,76 +325,28 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#121212"
+            android:layout_marginBottom="18dp"
+            android:backgroundTint="@color/dark_grey"
             android:fontFamily="@font/inter_regular"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
             android:text="@string/wish"
             android:textColor="@color/second_white"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/moments_chronicles"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDream"
-            app:strokeColor="#9575CD"
+            app:strokeColor="@color/purple"
             app:strokeWidth="1dp" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/main"
-            android:orientation="vertical"
+        <include
+            android:id="@+id/moments_chronicles"
+            layout="@layout/block_moments_chronicles"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/BtWish">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvMoments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_regular"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="1sp"
-                android:text="@string/moments"
-                android:textColor="#9575CD"
-                android:textSize="14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/image_moments" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvChron"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/inter_regular"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="1sp"
-                android:text="@string/chronicles"
-                android:textColor="#9575CD"
-                android:textSize="14sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="32dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="3"
-                tools:itemCount="9"
-                tools:listitem="@layout/image_chronicles" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            app:layout_constraintTop_toBottomOf="@+id/BtWish" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
