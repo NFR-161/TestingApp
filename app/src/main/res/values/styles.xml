@@ -76,7 +76,7 @@
         <item name="colorControlActivated">#9575CD</item>
 
         <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">#f1f1f1
+        <item name="colorSwitchThumbNormal">@color/second_white
         </item>
 
         <!-- inactive track color (30% transparency) -->
