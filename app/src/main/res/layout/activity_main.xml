@@ -23,41 +23,41 @@
             app:navigationIcon="@drawable/ic_menu"
             app:titleTextAppearance="@style/forID"
             app:titleTextColor="@color/second_white"
-            tools:title="@string/id"/>
+            tools:title="@string/id" />
 
 
         <ImageView
             android:id="@+id/imageMain"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="100dp"
             android:background="@color/main"
             android:backgroundTint="@color/main"
             app:layout_constraintBaseline_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
             app:srcCompat="@drawable/image" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="168dp"
             android:background="@drawable/elevation"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="@+id/imageMain"
-            app:layout_constraintTop_toTopOf="@+id/imageMain">
+            app:layout_constraintTop_toTopOf="@+id/toolbar">
 
             <TextView
-                android:id="@+id/some_id"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvGrade"
+                android:layout_width="33dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
-                android:gravity="center_horizontal|top"
                 android:lineSpacingExtra="-5sp"
+                android:paddingBottom="1dp"
                 android:text="@string/grade"
                 android:textAppearance="@style/some_id" />
         </LinearLayout>
@@ -69,11 +69,14 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="center_horizontal"
+            android:fontFamily="@font/inter_medium"
+            android:gravity="center_horizontal|top"
+            android:letterSpacing="-0.03"
+            android:lineSpacingExtra="2sp"
             android:text="@string/name"
             android:textColor="@color/second_white"
             android:textSize="18sp"
+            android:translationY="-1.11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,20 +93,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
+
         <TextView
             android:id="@+id/countries"
             android:layout_width="230dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="74dp"
+            android:height="18dp"
             android:gravity="top"
+            android:letterSpacing="-0.02"
             android:lineSpacingExtra="1sp"
             android:text="@string/countries"
             android:textAppearance="@style/countries"
+            android:textColor="@color/second_white"
             android:translationY="-0.53sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/language"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
@@ -120,7 +124,7 @@
         <TextView
             android:id="@+id/NYC"
             android:layout_width="230dp"
-            android:layout_height="20dp"
+            android:layout_height="18dp"
             android:layout_marginStart="21dp"
             android:layout_marginTop="22dp"
             android:layout_marginEnd="74dp"
@@ -136,31 +140,42 @@
 
         <TextView
             android:id="@+id/Choose1"
-            android:layout_width="54dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="48dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:width="50dp"
+            android:height="18dp"
             android:fontFamily="@font/inter_regular"
+            android:gravity="top|end"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="1sp"
+            android:paddingBottom="2dp"
             android:text="@string/choose"
             android:textAppearance="@style/icon_text"
+            android:textSize="14sp"
+            android:translationY="-0.53sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/countries"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <TextView
             android:id="@+id/Choose2"
-            android:layout_width="54dp"
-            android:layout_height="18dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:width="50dp"
+            android:height="18dp"
             android:fontFamily="@font/inter_regular"
+            android:gravity="top|end"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="1sp"
+            android:paddingBottom="2dp"
             android:text="@string/choose"
             android:textAppearance="@style/icon_text"
+            android:textSize="14sp"
+            android:translationY="-0.53sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/NYC"
             app:layout_constraintTop_toBottomOf="@+id/Choose1" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -343,6 +358,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvDream"
             app:strokeColor="@color/purple"
             app:strokeWidth="1dp" />
+
         <include
             android:id="@+id/moments_chronicles"
             layout="@layout/block_moments_chronicles"

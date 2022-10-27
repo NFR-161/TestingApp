@@ -6,7 +6,7 @@
         <item name="android:textSize">
             24sp
         </item>
-
+        <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:letterSpacing">
             -0.04
         </item>
@@ -84,7 +84,7 @@
 
     <style name="forID" >
 
-        <item name="fontFamily">@font/inter_regular</item>
+        <item name="fontFamily">@font/inter_medium</item>
         <item name="android:textSize">
             18sp
         </item>
