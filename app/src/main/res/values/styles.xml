@@ -80,7 +80,7 @@
         </item>
 
         <!-- inactive track color (30% transparency) -->
-        <item name="android:colorForeground">#17FFFFFF
+        <item name="android:colorForeground">@color/main
         </item>
     </style>
 

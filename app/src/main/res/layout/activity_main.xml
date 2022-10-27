@@ -167,12 +167,12 @@
             android:id="@+id/upper_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintDimensionRatio="3:1"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="14dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NYC"
@@ -181,12 +181,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/BtQuestion"
-            android:layout_width="185.5dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
-            android:backgroundTint="@color/dark_grey"
+            android:width="160dp"
+            android:height="36dp"
+            android:backgroundTint="@color/main"
             android:fontFamily="@font/inter_regular"
             android:gravity="center_horizontal|top"
             android:letterSpacing="-0.02"
@@ -199,7 +201,7 @@
             android:textColor="@color/second_white"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/BtPeople"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
             app:strokeColor="@color/purple"
@@ -208,12 +210,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/BtPeople"
-            android:layout_width="185.5dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/dark_grey"
+            android:width="160dp"
+            android:height="36dp"
+            android:backgroundTint="@color/main"
             android:fontFamily="@font/inter_regular"
             android:gravity="center_horizontal|top"
             android:letterSpacing="-0.02"
@@ -251,7 +255,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/sectionEdit"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="3dp"
@@ -320,26 +324,25 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/BtWish"
-            android:layout_width="379dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="18dp"
-            android:backgroundTint="@color/dark_grey"
+            android:width="328dp"
+            android:height="48dp"
+            android:backgroundTint="@color/main"
             android:fontFamily="@font/inter_regular"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
             android:text="@string/wish"
             android:textColor="@color/second_white"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/moments_chronicles"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDream"
+            app:layout_constraintTop_toBottomOf="@+id/tvDream"
             app:strokeColor="@color/purple"
             app:strokeWidth="1dp" />
-
         <include
             android:id="@+id/moments_chronicles"
             layout="@layout/block_moments_chronicles"
@@ -347,7 +350,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/BtWish" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

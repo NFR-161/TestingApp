@@ -11,7 +11,7 @@
         android:layout_height="0dp"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
-        android:src="@drawable/three"
+        android:src="@drawable/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,3:4"
         app:layout_constraintEnd_toEndOf="parent"
