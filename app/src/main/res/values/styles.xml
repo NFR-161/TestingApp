@@ -27,18 +27,16 @@
             -0.03
         </item>
 
-        <item name="android:textColor">
-            #DEFFFFFF
-        </item>
+        <item name="android:textColor">@color/second_white</item>
 
     </style>
 
     <style name="InterRegularTextAppearance">
         <item name="android:fontFamily">@font/inter_regular</item>
-        <item name="android:textColor">
-            #DEFFFFFF
-        </item>
+        <item name="android:textColor">@color/purple</item>
     </style>
+
+
     <style name="countries">
 
         <item name="android:textSize">
@@ -82,6 +80,19 @@
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">@color/main
         </item>
+    </style>
+
+    <style name="forID" >
+
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:letterSpacing">
+            -0.03
+        </item>
+        <item name="android:textColor">@color/second_white</item>
+
     </style>
 
 </resources>

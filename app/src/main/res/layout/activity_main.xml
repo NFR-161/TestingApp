@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/main_menu"
             app:navigationIcon="@drawable/ic_menu"
-            app:title="@string/id"
-            app:titleTextAppearance="@style/page_title" />
+            app:titleTextAppearance="@style/forID"
+            app:titleTextColor="@color/second_white"
+            tools:title="@string/id"/>
 
 
         <ImageView

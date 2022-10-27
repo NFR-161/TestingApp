@@ -18,9 +18,5 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setTitleTextAppearance(this, R.style.InterRegularTextAppearance)
 
 
-
-
-
-
     }
 }
