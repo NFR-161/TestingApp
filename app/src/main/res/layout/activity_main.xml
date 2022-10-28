@@ -116,18 +116,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginTop="22.27dp"
+            android:layout_marginTop="23.27dp"
             android:src="@drawable/ic_map"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/language" />
+            app:layout_constraintTop_toBottomOf="@+id/countries" />
 
         <TextView
             android:id="@+id/NYC"
             android:layout_width="230dp"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="74dp"
+            android:height="18dp"
             android:gravity="top"
             android:lineSpacingExtra="1sp"
             android:text="@string/NYC"
@@ -203,15 +204,14 @@
             android:layout_marginEnd="4dp"
             android:width="160dp"
             android:height="36dp"
-            android:backgroundTint="@color/main"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="center_horizontal|top"
+            android:backgroundTint="@color/dark_grey"
+            android:fontFamily="@font/inter_medium"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
-            android:paddingStart="18dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="18dp"
-            android:paddingBottom="10dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="0dp"
             android:text="@string/question"
             android:textColor="@color/second_white"
             android:textSize="14sp"
@@ -220,8 +220,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
             app:strokeColor="@color/purple"
-            app:strokeWidth="1dp" />
-
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/BtPeople"
@@ -232,15 +231,14 @@
             android:layout_marginEnd="16dp"
             android:width="160dp"
             android:height="36dp"
-            android:backgroundTint="@color/main"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="center_horizontal|top"
+            android:backgroundTint="@color/dark_grey"
+            android:fontFamily="@font/inter_medium"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
-            android:paddingStart="53dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="53dp"
-            android:paddingBottom="10dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="0dp"
             android:text="@string/people"
             android:textColor="@color/second_white"
             android:textSize="14sp"
@@ -248,8 +246,7 @@
             app:layout_constraintStart_toEndOf="@+id/BtQuestion"
             app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
             app:strokeColor="@color/purple"
-            app:strokeWidth="1dp" />
-
+            app:strokeWidth="2dp" />
 
         <TextView
             android:id="@+id/about_me"
@@ -257,14 +254,19 @@
             android:layout_height="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/inter_regular"
             android:gravity="top"
             android:lineSpacingExtra="1sp"
+            android:letterSpacing="-0.02"
             android:paddingBottom="0dp"
             android:text="@string/about_me"
             android:textColor="#99FFFFFF"
             android:textSize="12sp"
             android:translationY="-0.74sp"
+            app:layout_constraintBottom_toTopOf="@+id/sectionEdit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/BtQuestion" />
 
@@ -273,15 +275,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             android:paddingEnd="-17.5dp"
-            app:boxBackgroundColor="@color/dark_grey"
             app:counterEnabled="true"
             app:counterMaxLength="300"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/about_me"
             tools:ignore="RtlSymmetry">
@@ -291,19 +290,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:width="324dp"
+                android:height="56dp"
                 android:backgroundTint="@color/main"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="top"
                 android:lineSpacingExtra="5sp"
                 android:paddingStart="0dp"
-                android:paddingTop="0dp"
+                android:paddingTop="3dp"
                 android:textColor="@color/second_white"
                 android:textSize="16sp"
                 android:translationY="-2.32sp"
                 app:counterMaxLength="300"
                 tools:text="@string/edit_text" />
-
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.SwitchCompat
@@ -346,8 +345,8 @@
             android:layout_marginEnd="16dp"
             android:width="328dp"
             android:height="48dp"
-            android:backgroundTint="@color/main"
-            android:fontFamily="@font/inter_regular"
+            android:backgroundTint="@color/dark_grey"
+            android:fontFamily="@font/inter_medium"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
             android:text="@string/wish"
@@ -357,8 +356,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDream"
             app:strokeColor="@color/purple"
-            app:strokeWidth="1dp" />
-
+            app:strokeWidth="2dp" />
         <include
             android:id="@+id/moments_chronicles"
             layout="@layout/block_moments_chronicles"

@@ -94,5 +94,11 @@
         <item name="android:textColor">@color/second_white</item>
 
     </style>
+    <style name="Test" >
+
+        <item name="android:fillColor">@color/dark_grey</item>
+        <item name="android:colorBackground">@color/main</item>
+
+    </style>
 
 </resources>
