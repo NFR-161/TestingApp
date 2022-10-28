@@ -8,4 +8,6 @@
     <color name="second_white">#DEFFFFFF</color>
     <color name="purple">#9575CD</color>
     <color name="dark_grey">#17FFFFFF</color>
+    <color name="mtrl_textinput_default_box_stroke_color">9AFFFFFF</color>
+
 </resources>

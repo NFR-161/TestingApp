@@ -17,6 +17,5 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         binding.toolbar.setTitleTextAppearance(this, R.style.InterRegularTextAppearance)
 
-
     }
 }
