@@ -94,11 +94,9 @@
         <item name="android:textColor">@color/second_white</item>
 
     </style>
-    <style name="Test" >
-
-        <item name="android:fillColor">@color/dark_grey</item>
-        <item name="android:colorBackground">@color/main</item>
-
+    <style name="round_corner">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
     </style>
 
 </resources>
