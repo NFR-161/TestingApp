@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:menu="@menu/main_menu"
+                android:background="@color/main"
                 app:navigationIcon="@drawable/ic_menu"
                 app:title="ID 123 456 789"
                 app:titleTextAppearance="@style/some_id"
@@ -273,7 +274,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-
                 android:hint="@string/about_me"
                 app:hintTextAppearance="@style/textAboutStyle"
                 android:textColorHint="@color/white_60"
