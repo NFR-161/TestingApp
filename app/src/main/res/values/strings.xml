@@ -28,5 +28,7 @@
     <!--    Strings for People Fragment-->
 
     <string name="people_title">People</string>
+    <string name="karina">Карина Аримова</string>
+    <string name="subscribe">Subscribe</string>
 
 </resources>

@@ -8,11 +8,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#121212</color>
+
+
     <color name="second_white">#DEFFFFFF</color>
     <color name="purple">#9575CD</color>
     <color name="dark_grey">#17FFFFFF</color>
     <color name="light_grey">#99FFFFFF</color>
     <color name="text_color">#DEFFFFFF</color>
+
+    <color name="for_divider">#1AFFFFFF</color>
 
 
     <color name="white_60">#9AFFFFFF</color>

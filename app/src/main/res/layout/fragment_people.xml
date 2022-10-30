@@ -7,7 +7,7 @@
     android:background="@color/main">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/main_coordinator"
+        android:id="@+id/toolbar_coordinator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,8 +25,9 @@
                 android:id="@+id/fragment_people_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:menu="@menu/main_menu"
-                app:navigationIcon="@drawable/ic_menu"
+                app:menu="@menu/fragment_people_toolbar_menu"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                android:theme="@style/Theme.BackArrow"
                 app:title="@string/people_title"
                 app:titleTextAppearance="@style/style_title_toolbar"
                 app:titleTextColor="@color/second_white"
@@ -34,5 +35,17 @@
 
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_people"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_coordinator"
+        tools:itemCount="4"
+        tools:listitem="@layout/items_list_people" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

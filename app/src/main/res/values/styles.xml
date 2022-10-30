@@ -3,7 +3,7 @@
     <style name="style_title_toolbar">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/inter_regular</item>
-        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">@color/second_white</item>
     </style>
 
@@ -87,5 +87,9 @@
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">5sp</item>
         <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="Theme.BackArrow" parent="android:Theme.Holo">
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
     </style>
 </resources>
