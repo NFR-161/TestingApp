@@ -1,4 +1,8 @@
 <resources>
+
+
+<!--    Strings for Main activity-->
+
     <string name="app_name">TestingApp</string>
     <string name="id">ID 123 456 789</string>
     <string name="menu">Menu</string>
@@ -19,4 +23,10 @@
     <string name="chronicles">Chronicles</string>
     <string name="dream_and_get">Dream and get</string>
     <string name="edit_text">Жизнь будет гораздо проще и приятнее \nдля каждого человека, если мы будем</string>
+
+
+    <!--    Strings for People Fragment-->
+
+    <string name="people_title">People</string>
+
 </resources>
