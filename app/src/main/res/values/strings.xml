@@ -7,7 +7,11 @@
     <string name="countries">Russian, English, German</string>
     <string name="NYC">New York city, USA</string>
     <string name="choose">Choose</string>
+    <string name="rate_for_profile">3.5</string>
+    <string name="cities_for_profile">Volgodonsk, Russia</string>
+    <string name="language_for_profile">English, French</string>
     <string name="question">QUESTIONNAIRES</string>
+    <string name="name_for_profile">Mary James</string>
     <string name="people">PEOPLE</string>
     <string name="wish">WISHES</string>
     <string name="about_me">About me</string>

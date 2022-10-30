@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillProfileData() {
-        binding.tvRate.text = "3.2"
-        binding.tvName.text = "Mary Jones"
-        binding.tvCities.text = "Volgodonsk, Russia"
-        binding.tvLanguage.text = "English, French"
+        binding.tvRate.text = getString(R.string.rate_for_profile)
+        binding.tvName.text = getString(R.string.name_for_profile)
+        binding.tvCities.text = getString(R.string.cities_for_profile)
+        binding.tvLanguage.text = getString(R.string.language_for_profile)
     }
 
     private fun initAdapters() {
