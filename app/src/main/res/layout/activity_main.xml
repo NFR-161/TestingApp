@@ -1,423 +1,432 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll_content"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_content"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_coordinator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/main_menu"
-            app:navigationIcon="@drawable/ic_menu"
-            app:titleTextAppearance="@style/forID"
-            app:titleTextColor="@color/second_white"
-            tools:title="@string/id" />
-
-        <ImageView
-            android:id="@+id/imageMain"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="100dp"
-            android:background="@color/main"
-            android:backgroundTint="@color/main"
-            app:layout_constraintBaseline_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar"
-            app:srcCompat="@drawable/image" />
+            app:elevation="0dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="168dp"
-            android:background="@drawable/elevation"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@+id/imageMain"
-            app:layout_constraintTop_toTopOf="@+id/toolbar">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/main_menu"
+                app:navigationIcon="@drawable/ic_menu"
+                app:title="ID 123 456 789"
+                app:titleTextAppearance="@style/some_id"
+                app:titleTextColor="@color/second_white"
+                tools:title="ID 123 456 789" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_coordinator">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinatorLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/user_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user_image"
+                    app:shapeAppearanceOverlay="@style/round_image" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/small_round_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|start"
+                    android:background="@color/main"
+                    android:backgroundTint="@color/dark_grey"
+                    android:backgroundTintMode="add"
+                    android:padding="1dp"
+                    app:shapeAppearanceOverlay="@style/round_image"
+                    app:strokeColor="@color/second_white"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:id="@+id/tvRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="@string/grade"
+                    android:textColor="@color/second_white"
+                    android:textSize="24sp"
+                    app:layout_anchor="@+id/small_round_image"
+                    app:layout_anchorGravity="center" />
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
             <TextView
-                android:id="@+id/tvGrade"
-                android:layout_width="33dp"
+                android:id="@+id/tvName"
+                android:layout_width="328dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/inter_regular"
-                android:lineSpacingExtra="-5sp"
-                android:paddingBottom="1dp"
-                android:text="@string/grade"
-                android:textAppearance="@style/some_id" />
-        </LinearLayout>
+                android:gravity="center_horizontal|top"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="2sp"
+                android:text="@string/name"
+                android:textColor="@color/second_white"
+                android:textSize="18sp"
+                android:translationY="-1.11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/coordinatorLayout"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="328dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/inter_medium"
-            android:gravity="center_horizontal|top"
-            android:letterSpacing="-0.03"
-            android:lineSpacingExtra="2sp"
-            android:text="@string/name"
-            android:textColor="@color/second_white"
-            android:textSize="18sp"
-            android:translationY="-1.11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageMain"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_language"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+            <ImageView
+                android:id="@+id/language_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_language"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
 
-        <TextView
-            android:id="@+id/countries"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="24dp"
-            android:height="18dp"
-            android:gravity="top"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="1sp"
-            android:text="@string/countries"
-            android:textAppearance="@style/countries"
-            android:textColor="@color/second_white"
-            android:translationY="-0.53sp"
-            app:layout_constraintStart_toEndOf="@+id/language"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+            <TextView
+                android:id="@+id/tv_language"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="top"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/countries"
+                android:textAppearance="@style/countries"
+                android:textColor="@color/second_white"
+                android:translationY="-0.53sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/language_image"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-        <ImageView
-            android:id="@+id/map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="23.27dp"
-            android:src="@drawable/ic_map"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/countries" />
+            <ImageView
+                android:id="@+id/map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="23.27dp"
+                android:src="@drawable/ic_map"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_language" />
 
-        <TextView
-            android:id="@+id/NYC"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="74dp"
-            android:height="18dp"
-            android:gravity="top"
-            android:lineSpacingExtra="1sp"
-            android:text="@string/NYC"
-            android:textAppearance="@style/countries"
-            android:translationY="-0.53sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/map"
-            app:layout_constraintTop_toBottomOf="@+id/countries" />
+            <TextView
+                android:id="@+id/tv_cities"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="74dp"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="top"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/NYC"
+                android:textAppearance="@style/countries"
+                android:translationY="-0.53sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/map"
+                app:layout_constraintTop_toBottomOf="@+id/tv_language" />
 
-        <TextView
-            android:id="@+id/Choose1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:width="50dp"
-            android:height="18dp"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="top|end"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="1sp"
-            android:paddingBottom="2dp"
-            android:text="@string/choose"
-            android:textAppearance="@style/icon_text"
-            android:textSize="14sp"
-            android:translationY="-0.53sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+            <TextView
+                android:id="@+id/upper_choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="top|end"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="1sp"
+                android:paddingBottom="2dp"
+                android:text="@string/choose"
+                android:textAppearance="@style/icon_text"
+                android:textSize="14sp"
+                android:translationY="-0.53sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-        <TextView
-            android:id="@+id/Choose2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:width="50dp"
-            android:height="18dp"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="top|end"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="1sp"
-            android:paddingBottom="2dp"
-            android:text="@string/choose"
-            android:textAppearance="@style/icon_text"
-            android:textSize="14sp"
-            android:translationY="-0.53sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Choose1" />
+            <TextView
+                android:id="@+id/bottom_choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="top|end"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="1sp"
+                android:paddingBottom="2dp"
+                android:text="@string/choose"
+                android:textAppearance="@style/icon_text"
+                android:textSize="14sp"
+                android:translationY="-0.53sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/upper_choose" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/upper_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="14dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintDimensionRatio="3:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NYC"
-            tools:itemCount="4"
-            tools:listitem="@layout/items_account" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_profile"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="14dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintDimensionRatio="3:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cities"
+                tools:itemCount="4"
+                tools:listitem="@layout/items_profile" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/BtQuestion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
-            android:width="160dp"
-            android:height="36dp"
-            android:backgroundTint="@color/dark_grey"
-            android:fontFamily="@font/inter_medium"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="-1sp"
-            android:text="@string/question"
-            android:textColor="@color/second_white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/BtPeople"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
-            app:strokeColor="@color/purple"
-            app:strokeWidth="1dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/BtQuestion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="4dp"
+                android:width="160dp"
+                android:height="36dp"
+                android:backgroundTint="@color/dark_grey"
+                android:fontFamily="@font/inter_regular"
+                android:lineSpacingExtra="-1sp"
+                android:text="@string/question"
+                android:textColor="@color/second_white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/BtPeople"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rc_profile"
+                app:strokeColor="@color/purple"
+                app:strokeWidth="1dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/BtPeople"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:width="160dp"
-            android:height="36dp"
-            android:backgroundTint="@color/dark_grey"
-            android:fontFamily="@font/inter_medium"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="-1sp"
-            android:text="@string/people"
-            android:textColor="@color/second_white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/BtQuestion"
-            app:layout_constraintTop_toBottomOf="@+id/upper_recycler"
-            app:strokeColor="@color/purple"
-            app:strokeWidth="1dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/BtPeople"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:width="160dp"
+                android:height="36dp"
+                android:backgroundTint="@color/dark_grey"
+                android:fontFamily="@font/inter_regular"
+                android:lineSpacingExtra="-1sp"
+                android:text="@string/people"
+                android:textColor="@color/second_white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/BtQuestion"
+                app:layout_constraintTop_toBottomOf="@+id/rc_profile"
+                app:strokeColor="@color/purple"
+                app:strokeWidth="1dp" />
 
-        <TextView
-            android:id="@+id/about_me"
-            android:layout_width="324dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="top"
-            android:lineSpacingExtra="1sp"
-            android:letterSpacing="-0.02"
-            android:paddingBottom="0dp"
-            android:text="@string/about_me"
-            android:textColor="#99FFFFFF"
-            android:textSize="12sp"
-            android:translationY="-0.74sp"
-            app:layout_constraintBottom_toTopOf="@+id/sectionEdit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BtQuestion" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/sectionEdit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            app:boxBackgroundColor="@color/main"
-            android:paddingEnd="-17.5dp"
-            android:enabled="true"
-            app:counterEnabled="true"
-            app:counterMaxLength="300"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/about_me"
-            tools:ignore="RtlSymmetry">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                android:width="324dp"
-                android:height="56dp"
+
+                android:hint="@string/about_me"
+                app:hintTextAppearance="@style/textAboutStyle"
+                android:textColorHint="@color/white_60"
+                app:boxStrokeColor="@color/light_grey"
+                app:counterEnabled="true"
+                app:counterMaxLength="300"
+                app:counterTextAppearance="@style/TextCounterEditStyle"
+                app:counterTextColor="@color/white_60"
+                app:hintTextColor="@color/white_60"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/BtQuestion"
+                tools:ignore="MissingConstraints">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:fontFamily="@font/inter"
+                android:inputType="textMultiLine"
+                android:lineHeight="24dp"
+                android:textColor="@color/second_white"
+                android:maxLines="2"
+                android:paddingStart="0dp"
+                style="@style/TextInputEditText"
+                android:paddingEnd="0dp"
+                android:textColorLink="@color/white_60"
+                app:counterMaxLength="300"
+                tools:text="@string/about_me" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="16dp"
+                android:checked="true"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:theme="@style/SCBSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tvDream"
+                app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
+
+            <TextView
+                android:id="@+id/tvDream"
+                android:layout_width="296dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="top"
                 android:lineSpacingExtra="5sp"
-                android:paddingStart="0dp"
-                android:paddingTop="3dp"
+                android:text="@string/dream_and_get"
                 android:textColor="@color/second_white"
                 android:textSize="16sp"
                 android:translationY="-2.32sp"
-                app:counterMaxLength="300"
-                tools:text="@string/edit_text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="16dp"
-            android:checked="true"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:theme="@style/SCBSwitch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/tvDream"
-            app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/BtWish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:width="328dp"
+                android:height="48dp"
+                android:backgroundTint="@color/dark_grey"
+                android:fontFamily="@font/inter_regular"
+                android:lineSpacingExtra="-1sp"
+                android:text="@string/wish"
+                android:textColor="@color/second_white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDream"
+                app:strokeColor="@color/purple"
+                app:strokeWidth="1dp" />
 
-        <TextView
-            android:id="@+id/tvDream"
-            android:layout_width="296dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="top"
-            android:lineSpacingExtra="5sp"
-            android:text="@string/dream_and_get"
-            android:textColor="@color/second_white"
-            android:textSize="16sp"
-            android:translationY="-2.32sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sectionEdit" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMoments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/moments"
+                android:textColor="#9575CD"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/BtWish" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/BtWish"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:width="328dp"
-            android:height="48dp"
-            android:backgroundTint="@color/dark_grey"
-            android:fontFamily="@font/inter_medium"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="-1sp"
-            android:text="@string/wish"
-            android:textColor="@color/second_white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDream"
-            app:strokeColor="@color/purple"
-            app:strokeWidth="1dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_moments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMoments"
+                tools:listitem="@layout/items_moments" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMoments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/inter_regular"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="1sp"
-            android:text="@string/moments"
-            android:textColor="#9575CD"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/BtWish" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChron"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/chronicles"
+                android:textColor="#9575CD"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rc_moments" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/resMoments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMoments"
-            tools:listitem="@layout/items_moments" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_chronicles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7.5dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:paddingStart="-2.5dp"
+                android:paddingEnd="-2.5dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvChron"
+                app:spanCount="3"
+                tools:itemCount="12"
+                tools:listitem="@layout/items_chronicles" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvChron"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/inter_regular"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="1sp"
-            android:text="@string/chronicles"
-            android:textColor="#9575CD"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resMoments" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_chronicles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="7.5dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical"
-            android:paddingStart="-2.5dp"
-            android:paddingEnd="-2.5dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvChron"
-            app:spanCount="3"
-            tools:itemCount="12"
-            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/items_chronicles" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
