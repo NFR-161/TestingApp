@@ -1,34 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="some_id">
-
-        <item name="android:textSize">
-            18sp
-        </item>
+        <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/inter_regular</item>
-        <item name="android:letterSpacing">
-            -0.04
-        </item>
-
-        <item name="android:textColor">
-            #DEFFFFFF
-        </item>
-
+        <item name="android:letterSpacing">-0.04</item>
+        <item name="android:textColor">@color/second_white</item>
     </style>
 
     <style name="page_title">
-
-        <item name="android:textSize">
-            18sp
-        </item>
-
-        <item name="android:letterSpacing">
-            -0.03
-        </item>
-
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">@color/second_white</item>
-
     </style>
 
     <style name="InterRegularTextAppearance">
@@ -39,62 +21,30 @@
 
 
     <style name="countries">
-
-        <item name="android:textSize">
-            14sp
-        </item>
-
-        <item name="android:letterSpacing">
-            -0.02
-        </item>
-
-        <item name="android:textColor">
-            #DEFFFFFF
-        </item>
-
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/second_white</item>
     </style>
 
     <style name="icon_text">
-
-        <item name="android:textSize">
-            14sp
-        </item>
-
-        <item name="android:letterSpacing">
-            -0.02
-        </item>
-
-        <item name="android:textColor">
-            #9575CD
-        </item>
-
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">@color/purple</item>
     </style>
 
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">
-        <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">#9575CD</item>
-
-        <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">@color/second_white
-        </item>
-
-        <!-- inactive track color (30% transparency) -->
-        <item name="android:colorForeground">@color/main
-        </item>
+        <item name="colorControlActivated">@color/purple</item>
+        <item name="colorSwitchThumbNormal">@color/second_white</item>
+        <item name="android:colorForeground">@color/main</item>
     </style>
 
-    <style name="forID" >
-
+    <style name="forID">
         <item name="fontFamily">@font/inter_medium</item>
-        <item name="android:textSize">
-            18sp
-        </item>
-        <item name="android:letterSpacing">
-            -0.03
-        </item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">@color/second_white</item>
-
     </style>
+
     <style name="round_corner">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">4dp</item>
@@ -124,6 +74,7 @@
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:fontFamily">@font/inter_regular</item>
     </style>
+
     <style name="TextEditAboutStyle">
         <item name="android:lineSpacingExtra">5sp</item>
         <item name="android:textSize">16sp</item>
@@ -137,5 +88,4 @@
         <item name="android:lineSpacingExtra">5sp</item>
         <item name="fontFamily">@font/inter_regular</item>
     </style>
-
 </resources>
