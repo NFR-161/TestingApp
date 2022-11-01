@@ -92,4 +92,5 @@
     <style name="Theme.BackArrow" parent="android:Theme.Holo">
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
     </style>
+
 </resources>

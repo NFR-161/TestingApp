@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.adapters.ChroniclesAdapter
 import com.exampleone.testingapp.adapters.MomentsAdapter
@@ -18,6 +19,7 @@ class AccountFragment: Fragment() {
     private var profileAdapter = ProfileAdapter()
     private var momentsAdapter = MomentsAdapter()
     private var chroniclesAdapter = ChroniclesAdapter()
+
 
 
     private val binding by lazy {
@@ -34,9 +36,13 @@ class AccountFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         fillProfileData()
         initAdapters()
+
+        binding.BtPeople.setOnClickListener {
+            view.findNavController().navigate(R.id.action_accountFragment_to_peopleFragment2)
+        }
+
     }
 
     private fun fillProfileData() {
@@ -54,5 +60,7 @@ class AccountFragment: Fragment() {
 
         }
     }
+
+
 
 }
