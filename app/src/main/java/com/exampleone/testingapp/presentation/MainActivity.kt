@@ -1,13 +1,11 @@
-package com.exampleone.testingapp
+package com.exampleone.testingapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.exampleone.testingapp.adapters.ChroniclesAdapter
-import com.exampleone.testingapp.adapters.MomentsAdapter
-import com.exampleone.testingapp.adapters.ProfileAdapter
+import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

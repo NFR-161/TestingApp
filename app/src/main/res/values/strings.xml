@@ -30,5 +30,8 @@
     <string name="people_title">People</string>
     <string name="karina">Карина Аримова</string>
     <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe"> Unsubscribe</string>
+    <string name="fragment_people_title">People</string>
+
 
 </resources>
