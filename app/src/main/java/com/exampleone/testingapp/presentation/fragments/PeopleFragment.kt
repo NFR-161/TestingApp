@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.data.Repository
+import com.exampleone.testingapp.data.User
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleAdapter
 
@@ -50,4 +51,5 @@ class PeopleFragment : Fragment() {
         binding.fragmentPeopleToolbar.setupWithNavController(navController, appBarConfiguration)
         binding.fragmentPeopleToolbar.title = getString(R.string.fragment_people_title)
     }
+
 }

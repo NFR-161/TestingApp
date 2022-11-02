@@ -1,22 +1,22 @@
 package com.exampleone.testingapp.presentation.adapters
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.data.User
-import com.exampleone.testingapp.databinding.ItemsPeopleEnabledBinding
+import com.exampleone.testingapp.databinding.ItemsPeopleBinding
 
-class PeopleAdapter(private val userList: List<User>, val context: Context) :
+
+class PeopleAdapter(private var userList: List<User>, val context: Context) :
     RecyclerView.Adapter<PeopleAdapter.TempAdapterHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempAdapterHolder {
-        val layout = R.layout.items_people_enabled
+        val layout = R.layout.items_people
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return TempAdapterHolder(view, context)
     }
@@ -32,24 +32,26 @@ class PeopleAdapter(private val userList: List<User>, val context: Context) :
     class TempAdapterHolder(private val view: View, val context: Context) :
         RecyclerView.ViewHolder(view) {
 
-        private val binding = ItemsPeopleEnabledBinding.bind(view)
-        private var subscribe: TextView = view.findViewById(R.id.subscribe)
-        fun bind(item: User) {
+        private val binding = ItemsPeopleBinding.bind(view)
 
-            Glide
-                .with(itemView.context)
-                .load(item.picUrl)
-                .into(binding.roundImage)
+        fun bind(user: User) {
+            binding.apply {
+                Glide
+                    .with(itemView.context)
+                    .load(user.picUrl)
+                    .into(roundImage)
 
-            binding.nameOfUser.text = item.name
+                nameOfUser.text = user.name
+                subscribe.setOnClickListener {
 
-            subscribe.setOnClickListener {
-                if (subscribe.text.toString() == SUBSCRIBE) {
-                    subscribe.text = context.getText(R.string.unsubscribe)
-                    subscribe.setTextColor(context.resources.getColor(R.color.light_grey))
-                } else {
-                    subscribe.text = context.getText(R.string.subscribe)
-                    subscribe.setTextColor(context.resources.getColor(R.color.purple))
+                    if (subscribe.text == SUBSCRIBE) {
+                        subscribe.text = context.getText(R.string.unsubscribe)
+                        subscribe.setTextColor(context.resources.getColor(R.color.light_grey))
+
+                    } else {
+                        subscribe.text = context.getText(R.string.subscribe)
+                        subscribe.setTextColor(context.resources.getColor(R.color.purple))
+                    }
                 }
             }
         }
@@ -62,8 +64,6 @@ class PeopleAdapter(private val userList: List<User>, val context: Context) :
     companion object {
         const val SUBSCRIBE = "Subscribe"
     }
-
-
 }
 
 
