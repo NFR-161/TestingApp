@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.data.Repository
 import com.exampleone.testingapp.data.User
@@ -29,21 +30,40 @@ class PeopleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        initRecyclerView()
+        initAppbar()
+        initAdapterItem()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        peopleAdapter.submitList(repository.getPersonList())
 
-        initPeopleAdapter()
-        initAppbar()
     }
 
-    private fun initPeopleAdapter() {
-        val peopleList = repository.getPersonList()
-        peopleAdapter = PeopleAdapter(peopleList, activity as Context)
-        binding.rcPeople.adapter = peopleAdapter
+    private fun initRecyclerView() {
+        val recyclerView = binding.rcPeople
+        val layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = layoutManager
+        peopleAdapter = PeopleAdapter(requireContext())
+        recyclerView.adapter = peopleAdapter
     }
+
+      private fun initAdapterItem() {
+
+          peopleAdapter.onItemClickListener = { position ->
+              val listOfPeople = peopleAdapter.currentList.toMutableList()
+              val userItem = listOfPeople [position]
+              listOfPeople [position] = User(
+                  id = userItem.id,
+                  name = userItem.name,
+                  enabled = !userItem.enabled,
+                  picUrl = userItem.picUrl
+              )
+              peopleAdapter.submitList(listOfPeople )
+          }
+      }
 
     private fun initAppbar() {
         val navController = findNavController()

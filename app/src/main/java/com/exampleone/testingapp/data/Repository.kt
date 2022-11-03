@@ -24,6 +24,8 @@ class Repository {
             if (counter < 9) {
                 list.add(
                     User(
+                        id = i,
+                        enabled = true,
                         name = faker.name().name(),
                         picUrl = photoUrl[counter]
                     )
@@ -32,6 +34,8 @@ class Repository {
             } else {
                 list.add(
                     User(
+                        id = i,
+                        enabled = true,
                         name = faker.name().name(),
                         picUrl = photoUrl[counter]
                     )
