@@ -1,4 +1,4 @@
-package com.exampleone.testingapp.presentation.adapters
+package com.exampleone.testingapp.presentation.adapters.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.exampleone.testingapp.data.User

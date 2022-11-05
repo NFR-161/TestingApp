@@ -15,6 +15,8 @@ import com.exampleone.testingapp.data.Repository
 import com.exampleone.testingapp.data.User
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleAdapter
+import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 import java.util.ArrayList
 
 class PeopleFragment : Fragment() {
@@ -31,40 +33,40 @@ class PeopleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        initRecyclerView()
+//        initRecyclerView()
         initAppbar()
-        initAdapterItem()
+//        initAdapterItem()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        peopleAdapter.submitList(repository.getPersonList())
+        initPager()
 
     }
 
-    private fun initRecyclerView() {
-        val recyclerView = binding.rcPeople
-        val layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.layoutManager = layoutManager
-        peopleAdapter = PeopleAdapter(requireContext())
-        recyclerView.adapter = peopleAdapter
-    }
+//    private fun initRecyclerView() {
+//        val recyclerView = binding.rcPeople
+//        val layoutManager = LinearLayoutManager(requireContext())
+//        recyclerView.layoutManager = layoutManager
+//        peopleAdapter = PeopleAdapter(requireContext())
+//        recyclerView.adapter = peopleAdapter
+//    }
 
-      private fun initAdapterItem() {
-
-          peopleAdapter.onItemClickListener = { position ->
-              val listOfPeople = peopleAdapter.currentList.toMutableList()
-              val userItem = listOfPeople [position]
-              listOfPeople [position] = User(
-                  id = userItem.id,
-                  name = userItem.name,
-                  enabled = !userItem.enabled,
-                  picUrl = userItem.picUrl
-              )
-              peopleAdapter.submitList(listOfPeople )
-          }
-      }
+//      private fun initAdapterItem() {
+//
+//          peopleAdapter.onItemClickListener = { position ->
+//              val listOfPeople = peopleAdapter.currentList.toMutableList()
+//              val userItem = listOfPeople [position]
+//              listOfPeople [position] = User(
+//                  id = userItem.id,
+//                  name = userItem.name,
+//                  enabled = !userItem.enabled,
+//                  picUrl = userItem.picUrl
+//              )
+//              peopleAdapter.submitList(listOfPeople )
+//          }
+//      }
 
     private fun initAppbar() {
         val navController = findNavController()
@@ -73,4 +75,36 @@ class PeopleFragment : Fragment() {
         binding.fragmentPeopleToolbar.title = getString(R.string.fragment_people_title)
     }
 
+    private fun initPager(){
+        binding.pager.adapter = PeopleStateAdapter(requireActivity())
+
+        val tabLayoutMediator = binding.tabLayout.let {
+            binding.pager.let { it1 ->
+                TabLayoutMediator(it,
+                    it1,
+                    TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+
+                        when (position) {
+                            0 -> {
+                                tab.text = getString(R.string.subscribers)
+                            }
+                            1 -> {
+                                tab.text = getString(R.string.subscriptions)
+                            }
+                            2 -> {
+                                tab.text = getString(R.string.mutually)
+                            }
+                        }
+
+                    })
+            }
+        }
+        tabLayoutMediator.attach()
+
+    }
+
 }
+
+
+
+
