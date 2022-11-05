@@ -41,11 +41,8 @@ class PeopleAdapter(val context: Context) :
             holder.tvSubscribe.text = context.resources.getText(R.string.unsubscribe)
             holder.tvSubscribe.setTextColor(context.resources.getColor(R.color.light_grey))
         }
-
-        Glide
-            .with(holder.view.context)
-            .load(userItem.picUrl)
-            .into(holder.roundImage)
+                             /*Glide* extension fun*/
+        Glide.with(holder.view.context).load(userItem.picUrl).into(holder.roundImage)
         holder.tvNameOfUser.text = userItem.name
 
     }

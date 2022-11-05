@@ -15,6 +15,7 @@ import com.exampleone.testingapp.data.Repository
 import com.exampleone.testingapp.data.User
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleAdapter
+import java.util.ArrayList
 
 class PeopleFragment : Fragment() {
 
