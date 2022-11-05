@@ -55,7 +55,7 @@ class PeopleAdapter(val context: Context) :
         val roundImage = view.findViewById<ImageView>(R.id.round_image)
     }
 
-    fun launchGlide (holder: TempAdapterHolder, picUrl:String): ViewTarget<ImageView, Drawable> {
+    private fun launchGlide (holder: TempAdapterHolder, picUrl:String): ViewTarget<ImageView, Drawable> {
        return  Glide.with(holder.view.context).load(picUrl).into(holder.roundImage)
 
     }
