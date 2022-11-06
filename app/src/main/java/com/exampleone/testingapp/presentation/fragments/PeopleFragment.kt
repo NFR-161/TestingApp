@@ -1,28 +1,26 @@
 package com.exampleone.testingapp.presentation.fragments
 
-import android.content.Context
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.Repository
-import com.exampleone.testingapp.data.User
+import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
-import com.exampleone.testingapp.presentation.adapters.PeopleAdapter
+import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.UserRepository
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
+import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
 import com.google.android.material.tabs.TabLayoutMediator
-import java.util.ArrayList
 
 class PeopleFragment : Fragment() {
-
-    private lateinit var peopleAdapter: PeopleAdapter
-    private val repository = Repository()
 
     private val binding by lazy {
         FragmentPeopleBinding.inflate(layoutInflater)
@@ -33,40 +31,14 @@ class PeopleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        initRecyclerView()
         initAppbar()
-//        initAdapterItem()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPager()
-
     }
-
-//    private fun initRecyclerView() {
-//        val recyclerView = binding.rcPeople
-//        val layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.layoutManager = layoutManager
-//        peopleAdapter = PeopleAdapter(requireContext())
-//        recyclerView.adapter = peopleAdapter
-//    }
-
-//      private fun initAdapterItem() {
-//
-//          peopleAdapter.onItemClickListener = { position ->
-//              val listOfPeople = peopleAdapter.currentList.toMutableList()
-//              val userItem = listOfPeople [position]
-//              listOfPeople [position] = User(
-//                  id = userItem.id,
-//                  name = userItem.name,
-//                  enabled = !userItem.enabled,
-//                  picUrl = userItem.picUrl
-//              )
-//              peopleAdapter.submitList(listOfPeople )
-//          }
-//      }
 
     private fun initAppbar() {
         val navController = findNavController()

@@ -1,4 +1,4 @@
-package com.exampleone.testingapp.presentation.adapters
+package com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.User
+import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.presentation.adapters.utils.PeopleItemDiffCallback
 
-
-class PeopleAdapter(val context: Context) :
-    ListAdapter<User, PeopleAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
+class SubscribersAdapter(val context: Context) :
+    ListAdapter<UserItem, SubscribersAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
 
 
     var onItemClickListener: ((Int) -> Unit)? = null
@@ -55,12 +54,9 @@ class PeopleAdapter(val context: Context) :
     }
 
     private fun launchGlide (holder: TempAdapterHolder, picUrl:String): ViewTarget<ImageView, Drawable> {
-       return  Glide.with(holder.view.context).load(picUrl).into(holder.roundImage)
+        return  Glide.with(holder.view.context).load(picUrl).into(holder.roundImage)
 
     }
 
 }
-
-
-
 

@@ -1,8 +1,10 @@
 package com.exampleone.testingapp.data
 
+import com.exampleone.testingapp.domain.UserItem
 import com.github.javafaker.Faker
 
-class Repository {
+class DataRepository {
+    lateinit var userItem: UserItem
     private val faker = Faker()
     private val photoUrl = listOf(
         "https://vse-footbolki.ru/image/cache/catalog/vsm/0/2/2323/2323771/previews/people_1_pad_front_white_700-280x280.jpg",
@@ -17,32 +19,29 @@ class Repository {
         "https://imagetext2.ru/pics_max/imagetext_ru_27626.jpg"
     )
 
-    fun getPersonList(): List<User> {
+    fun getPersonList(): UserItem {
         var counter = 0
-        val list = mutableListOf<User>()
         for (i in 1..40) {
             if (counter < 9) {
-                list.add(
-                    User(
-                        id = i,
-                        enabled = true,
-                        name = faker.name().name(),
-                        picUrl = photoUrl[counter]
-                    )
+                userItem = UserItem(
+                    id = 0,
+                    enabled = true,
+                    name = faker.name().name(),
+                    picUrl = photoUrl[counter]
                 )
+
                 counter++
             } else {
-                list.add(
-                    User(
-                        id = i,
-                        enabled = true,
-                        name = faker.name().name(),
-                        picUrl = photoUrl[counter]
-                    )
+                userItem = UserItem(
+                    id = 0,
+                    enabled = true,
+                    name = faker.name().name(),
+                    picUrl = photoUrl[counter]
                 )
+
                 counter = 0
             }
         }
-        return list
+        return userItem
     }
 }

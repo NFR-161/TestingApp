@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.exampleone.testingapp.R
 
-class Subscriptions : Fragment() {
+class SubscriptionsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

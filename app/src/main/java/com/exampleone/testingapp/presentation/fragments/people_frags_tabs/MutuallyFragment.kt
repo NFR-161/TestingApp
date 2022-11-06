@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.exampleone.testingapp.R
 
-class Subscribers : Fragment() {
+
+class MutuallyFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +17,7 @@ class Subscribers : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_subscribers, container, false)
+        return inflater.inflate(R.layout.fragment_mutually, container, false)
     }
+
 }

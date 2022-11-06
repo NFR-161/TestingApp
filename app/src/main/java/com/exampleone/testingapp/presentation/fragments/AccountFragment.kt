@@ -5,18 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.exampleone.testingapp.R
+import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentAccountBinding
 import com.exampleone.testingapp.presentation.adapters.ChroniclesAdapter
 import com.exampleone.testingapp.presentation.adapters.MomentsAdapter
 import com.exampleone.testingapp.presentation.adapters.ProfileAdapter
+import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
 
 class AccountFragment: Fragment() {
 
     private var profileAdapter = ProfileAdapter()
     private var momentsAdapter = MomentsAdapter()
     private var chroniclesAdapter = ChroniclesAdapter()
+
+    private lateinit var viewModel: UserViewModel
+    private var dataRepository = DataRepository()
 
     private val binding by lazy {
         FragmentAccountBinding.inflate(layoutInflater)
@@ -38,6 +44,8 @@ class AccountFragment: Fragment() {
         binding.BtPeople.setOnClickListener {
             view.findNavController().navigate(R.id.action_accountFragment_to_peopleFragment2)
         }
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        viewModel.insert(dataRepository.getPersonList())
     }
 
     private fun fillProfileData() {
