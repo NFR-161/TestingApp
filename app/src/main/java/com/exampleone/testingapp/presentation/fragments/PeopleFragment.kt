@@ -1,12 +1,11 @@
 package com.exampleone.testingapp.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,9 +13,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
-import com.exampleone.testingapp.domain.UserItem
-import com.exampleone.testingapp.domain.UserRepository
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.SubscribersFragment
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribersAdapter
 import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -48,8 +47,8 @@ class PeopleFragment : Fragment() {
     }
 
     private fun initPager(){
-        binding.pager.adapter = PeopleStateAdapter(requireActivity())
 
+        binding.pager.adapter = PeopleStateAdapter(requireActivity())
         val tabLayoutMediator = binding.tabLayout.let {
             binding.pager.let { it1 ->
                 TabLayoutMediator(it,
@@ -72,9 +71,7 @@ class PeopleFragment : Fragment() {
             }
         }
         tabLayoutMediator.attach()
-
     }
-
 }
 
 

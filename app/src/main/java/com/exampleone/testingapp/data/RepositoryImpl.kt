@@ -13,6 +13,11 @@ class RepositoryImpl( application: Application) : UserRepository {
 
     private val mapper = UserMapper()
 
+    override suspend fun insertUserLIst(userModel: List<UserModel>) {
+         userDao.insertUserList(userModel)
+    }
+
+
     override suspend fun insertUser(userItem: UserItem) {
         userDao.insertUser(mapper.mapUserItemToDbModel(userItem))
     }

@@ -3,7 +3,6 @@ package com.exampleone.testingapp.presentation.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.exampleone.testingapp.domain.UserRepository
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.MutuallyFragment
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.SubscribersFragment
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.SubscriptionsFragment
@@ -29,5 +28,4 @@ class PeopleStateAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdap
             }
         }
     }
-
 }

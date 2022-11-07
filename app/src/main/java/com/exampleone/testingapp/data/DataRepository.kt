@@ -19,7 +19,7 @@ class DataRepository {
         "https://imagetext2.ru/pics_max/imagetext_ru_27626.jpg"
     )
 
-    fun getPersonList(): UserItem {
+    fun getPersonListItem(): UserItem {
         var counter = 0
         for (i in 1..40) {
             if (counter < 9) {
@@ -43,5 +43,33 @@ class DataRepository {
             }
         }
         return userItem
+    }
+
+
+    fun getPersonList(): List<UserModel> {
+        val list = mutableListOf<UserModel>()
+        var counter = 0
+        for (i in 1..5) {
+            if (counter < 9) {
+                list.add (UserModel(
+                    id = 0,
+                    enabled = true,
+                    name = faker.name().name(),
+                    picUrl = photoUrl[counter]
+                ))
+
+                counter++
+            } else {
+                list.add (UserModel(
+                    id = 0,
+                    enabled = true,
+                    name = faker.name().name(),
+                    picUrl = photoUrl[counter]
+                ))
+
+                counter = 0
+            }
+        }
+        return list
     }
 }

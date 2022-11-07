@@ -6,8 +6,12 @@ import androidx.room.*
 
 @Dao
 interface UserDao {
-    @Insert
+
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userModel: UserModel)
+
+    @Insert
+    suspend fun insertUserList(userModel: List<UserModel>)
 
     @Update
     suspend fun updateUser(userModel: UserModel)

@@ -5,6 +5,8 @@ import com.exampleone.testingapp.data.UserModel
 
 interface UserRepository {
 
+    suspend fun insertUserLIst(userModel: List<UserModel>)
+
     suspend fun insertUser(userItem: UserItem)
 
     suspend fun updateUser(userItem: UserItem)

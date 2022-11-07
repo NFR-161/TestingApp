@@ -1,5 +1,6 @@
 package com.exampleone.testingapp.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +11,19 @@ import androidx.navigation.findNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentAccountBinding
+import com.exampleone.testingapp.presentation.MainActivity
 import com.exampleone.testingapp.presentation.adapters.ChroniclesAdapter
 import com.exampleone.testingapp.presentation.adapters.MomentsAdapter
 import com.exampleone.testingapp.presentation.adapters.ProfileAdapter
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.SubscribersFragment
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribersAdapter
 import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
 
-class AccountFragment: Fragment() {
+class AccountFragment : Fragment() {
 
     private var profileAdapter = ProfileAdapter()
     private var momentsAdapter = MomentsAdapter()
     private var chroniclesAdapter = ChroniclesAdapter()
-
-    private lateinit var viewModel: UserViewModel
-    private var dataRepository = DataRepository()
 
     private val binding by lazy {
         FragmentAccountBinding.inflate(layoutInflater)
@@ -38,14 +39,14 @@ class AccountFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         fillProfileData()
         initAdapters()
 
         binding.BtPeople.setOnClickListener {
             view.findNavController().navigate(R.id.action_accountFragment_to_peopleFragment2)
         }
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
-        viewModel.insert(dataRepository.getPersonList())
     }
 
     private fun fillProfileData() {

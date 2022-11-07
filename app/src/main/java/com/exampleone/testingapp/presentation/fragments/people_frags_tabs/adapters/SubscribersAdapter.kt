@@ -2,6 +2,7 @@ package com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapt
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,22 +19,22 @@ import com.exampleone.testingapp.presentation.adapters.utils.PeopleItemDiffCallb
 class SubscribersAdapter(val context: Context) :
     ListAdapter<UserItem, SubscribersAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
 
-
     var onItemClickListener: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempAdapterHolder {
         val layout = R.layout.items_people
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return TempAdapterHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: TempAdapterHolder, position: Int) {
         val userItem = getItem(position)
-
         holder.tvSubscribe.setOnClickListener {
             onItemClickListener?.invoke(position)
 
         }
+        Log.d("MyLog", "adapter")
         if (userItem.enabled) {
             holder.tvSubscribe.text = context.resources.getText(R.string.subscribe)
             holder.tvSubscribe.setTextColor(context.resources.getColor(R.color.purple))
@@ -44,6 +45,7 @@ class SubscribersAdapter(val context: Context) :
 
         launchGlide(holder,userItem.picUrl)
         holder.tvNameOfUser.text = userItem.name
+
 
     }
 
