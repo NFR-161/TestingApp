@@ -9,7 +9,11 @@ interface UserRepository {
 
     suspend fun insertUser(userItem: UserItem)
 
+    suspend fun clear()
+
     suspend fun updateUser(userItem: UserItem)
+
+    fun searchDataBase(search:String): LiveData<List<UserItem>>
 
     fun getAllUsers(): LiveData<List<UserItem>>
 

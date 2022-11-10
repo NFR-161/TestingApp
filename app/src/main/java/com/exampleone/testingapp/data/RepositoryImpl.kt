@@ -7,19 +7,29 @@ import com.exampleone.testingapp.data.mappers.UserMapper
 import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.domain.UserRepository
 
-class RepositoryImpl( application: Application) : UserRepository {
+class RepositoryImpl(application: Application) : UserRepository {
 
     private val userDao = DataBase.getInstance(application).userDAO
 
     private val mapper = UserMapper()
 
     override suspend fun insertUserLIst(userModel: List<UserModel>) {
-         userDao.insertUserList(userModel)
+        userDao.insertUserList(userModel)
     }
 
-
+    override fun searchDataBase(search: String): LiveData<List<UserItem>> {
+        return Transformations.map(userDao.searchDataBase(search)) {
+            it.map {
+                mapper.mapDbModelToUserItem(it)
+            }
+        }
+    }
     override suspend fun insertUser(userItem: UserItem) {
         userDao.insertUser(mapper.mapUserItemToDbModel(userItem))
+    }
+
+    override suspend fun clear() {
+        userDao.clear()
     }
 
     override suspend fun updateUser(userItem: UserItem) {

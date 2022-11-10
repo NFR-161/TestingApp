@@ -1,20 +1,18 @@
 package com.exampleone.testingapp.presentation.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
+
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.SubscribersFragment
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribersAdapter
 import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
 import com.google.android.material.tabs.TabLayoutMediator
@@ -25,11 +23,15 @@ class PeopleFragment : Fragment() {
         FragmentPeopleBinding.inflate(layoutInflater)
     }
 
+    private val viewModel: UserViewModel by activityViewModels()
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        test()
         initAppbar()
         return binding.root
     }
@@ -47,7 +49,6 @@ class PeopleFragment : Fragment() {
     }
 
     private fun initPager(){
-
         binding.pager.adapter = PeopleStateAdapter(requireActivity())
         val tabLayoutMediator = binding.tabLayout.let {
             binding.pager.let { it1 ->
@@ -72,7 +73,24 @@ class PeopleFragment : Fragment() {
         }
         tabLayoutMediator.attach()
     }
+    fun test() {
+        val searchView = binding.fragmentPeopleToolbar.menu.findItem(R.id.search).actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    viewModel.initSearchText(newText)
+                }
+                return false
+            }
+        })
+    }
 }
+
+
 
 
 

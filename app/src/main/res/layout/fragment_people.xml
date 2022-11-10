@@ -26,7 +26,7 @@
                 android:id="@+id/fragment_people_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:menu="@menu/fragment_people_toolbar_menu"
+                app:menu="@menu/search_menu"
                 app:navigationIcon="@drawable/ic_arrow_back"
                 android:theme="@style/Theme.BackArrow"
                 app:title="@string/people_title"

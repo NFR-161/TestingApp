@@ -1,23 +1,16 @@
 package com.exampleone.testingapp.presentation.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentAccountBinding
-import com.exampleone.testingapp.presentation.MainActivity
 import com.exampleone.testingapp.presentation.adapters.ChroniclesAdapter
 import com.exampleone.testingapp.presentation.adapters.MomentsAdapter
 import com.exampleone.testingapp.presentation.adapters.ProfileAdapter
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.SubscribersFragment
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribersAdapter
-import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
 
 class AccountFragment : Fragment() {
 
@@ -39,8 +32,6 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         fillProfileData()
         initAdapters()
 

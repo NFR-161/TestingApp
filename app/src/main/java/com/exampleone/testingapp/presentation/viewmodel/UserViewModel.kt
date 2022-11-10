@@ -1,16 +1,11 @@
 package com.exampleone.testingapp.presentation.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.exampleone.testingapp.data.RepositoryImpl
 import com.exampleone.testingapp.data.UserModel
 import com.exampleone.testingapp.domain.UserItem
-import com.exampleone.testingapp.domain.useCases.GetUserListUseCase
-import com.exampleone.testingapp.domain.useCases.InsertUserListUseCase
-import com.exampleone.testingapp.domain.useCases.InsertUserUseCase
-import com.exampleone.testingapp.domain.useCases.UpdateUserUseCase
+import com.exampleone.testingapp.domain.useCases.*
 import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
@@ -22,19 +17,35 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val getUserListUseCase = GetUserListUseCase(repository)
     private val insertUserUseCase = InsertUserUseCase(repository)
     private val updateUserUseCase = UpdateUserUseCase(repository)
+    private val clearListUseCase = ClearListUseCase(repository)
 
+    private var _searchText = MutableLiveData<String>()
+    var searchText: LiveData<String> = _searchText
 
     val users = getUserListUseCase.users
 
-      fun insert(userItem: UserItem) = viewModelScope.launch {
+    fun initSearchText(text: String){
+        _searchText.postValue(text)
+    }
+
+    fun insert(userItem: UserItem) = viewModelScope.launch {
         insertUserUseCase(userItem)
     }
 
-      fun updateTask(userItem: UserItem) = viewModelScope.launch {
+    fun updateTask(userItem: UserItem) = viewModelScope.launch {
         updateUserUseCase(userItem)
     }
 
-       fun insertUserList(userModel: List<UserModel>) = viewModelScope.launch {
-           insertListUseCase(userModel)
-       }
+    fun insertUserList(userModel: List<UserModel>) = viewModelScope.launch {
+        insertListUseCase(userModel)
     }
+
+    fun clear() = viewModelScope.launch {
+        clearListUseCase.clear()
+    }
+
+    fun searchDataBase(search: String): LiveData<List<UserItem>> {
+        return repository.searchDataBase(search)
+    }
+
+}
