@@ -1,7 +1,6 @@
 package com.exampleone.testingapp.presentation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 
@@ -13,8 +12,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribersAdapter
-import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
+import com.exampleone.testingapp.presentation.viewmodel.MutuallyViewModel
+import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
+import com.exampleone.testingapp.presentation.viewmodel.SubscripViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PeopleFragment : Fragment() {
@@ -23,7 +23,9 @@ class PeopleFragment : Fragment() {
         FragmentPeopleBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: UserViewModel by activityViewModels()
+    private val viewModel: SubViewModel by activityViewModels()
+    private val subscripViewModel:SubscripViewModel by activityViewModels()
+    private val mutuallyViewModel:MutuallyViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -83,6 +85,8 @@ class PeopleFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     viewModel.initSearchText(newText)
+                    subscripViewModel.initSearchText(newText)
+                    mutuallyViewModel.initSearchText(newText)
                 }
                 return false
             }

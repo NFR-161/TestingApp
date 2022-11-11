@@ -5,20 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.ActivityMainBinding
-import com.exampleone.testingapp.presentation.viewmodel.UserViewModel
+import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
-    lateinit var viewModel: UserViewModel
+    lateinit var viewModel: SubViewModel
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)

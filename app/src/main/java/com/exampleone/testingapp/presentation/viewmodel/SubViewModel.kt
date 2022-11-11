@@ -8,7 +8,7 @@ import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.domain.useCases.*
 import kotlinx.coroutines.launch
 
-class UserViewModel(application: Application) : AndroidViewModel(application) {
+class SubViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private val repository = RepositoryImpl(application)
