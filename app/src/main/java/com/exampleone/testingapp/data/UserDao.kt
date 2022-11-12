@@ -20,7 +20,7 @@ interface UserDao {
     suspend fun clear()
 
     @Query("SELECT * FROM user_data_table")
-    fun getAllUsers(): LiveData<List<UserModel>>
+    fun getAllUsersForSubscribe(): LiveData<List<UserModel>>
 
     @Query("SELECT * FROM user_data_table WHERE user_name LIKE :searchQuery ")
     fun searchDataBase(searchQuery:String): LiveData<List<UserModel>>

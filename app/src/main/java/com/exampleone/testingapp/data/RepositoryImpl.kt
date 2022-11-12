@@ -1,11 +1,17 @@
 package com.exampleone.testingapp.data
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.exampleone.testingapp.data.mappers.UserMapper
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.UserItemSubscribe
 import com.exampleone.testingapp.domain.UserRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class RepositoryImpl(application: Application) : UserRepository {
 
@@ -17,30 +23,30 @@ class RepositoryImpl(application: Application) : UserRepository {
         userDao.insertUserList(userModel)
     }
 
-    override fun searchDataBase(search: String): LiveData<List<UserItem>> {
+    override fun searchDataBase(search: String): LiveData<List<UserItemSubscribe>> {
         return Transformations.map(userDao.searchDataBase(search)) {
             it.map {
-                mapper.mapDbModelToUserItem(it)
+                mapper.mapDbModelToUserItemSubscribe(it)
             }
         }
     }
-    override suspend fun insertUser(userItem: UserItem) {
-        userDao.insertUser(mapper.mapUserItemToDbModel(userItem))
+    override suspend fun insertUser(userItemSubscribe: UserItemSubscribe) {
+        userDao.insertUser(mapper.mapUserItemSubscribeToDbModel(userItemSubscribe))
     }
 
     override suspend fun clear() {
         userDao.clear()
     }
 
-    override suspend fun updateUser(userItem: UserItem) {
-        userDao.updateUser(mapper.mapUserItemToDbModel(userItem))
+    override suspend fun updateUser(userItemSubscribe: UserItemSubscribe) {
+        userDao.updateUser(mapper.mapUserItemSubscribeToDbModel(userItemSubscribe))
 
     }
 
-    override fun getAllUsers(): LiveData<List<UserItem>> {
-        return Transformations.map(userDao.getAllUsers()) {
+    override fun getAllUsersForSubscribe(): LiveData<List<UserItemSubscribe>> {
+        return Transformations.map(userDao.getAllUsersForSubscribe()) {
             it.map {
-                mapper.mapDbModelToUserItem(it)
+                mapper.mapDbModelToUserItemSubscribe(it)
             }
         }
     }

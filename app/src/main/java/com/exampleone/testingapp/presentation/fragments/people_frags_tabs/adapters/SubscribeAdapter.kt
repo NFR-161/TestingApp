@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.UserItemSubscribe
 import com.exampleone.testingapp.presentation.adapters.utils.PeopleItemDiffCallback
 import java.util.*
 
-class TabsAdapter(val context: Context) :
-    ListAdapter<UserItem, TabsAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
+class SubscribeAdapter(val context: Context) :
+    ListAdapter<UserItemSubscribe, SubscribeAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
 
-    private var unfilteredlist = listOf<UserItem>()
+    private var unfilteredlist = listOf<UserItemSubscribe>()
 
 
-    var onItemClickListener: ((Int) -> Unit)? = null
+    var onItemClickListener: ((UserItemSubscribe) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempAdapterHolder {
         val layout = R.layout.items_people
@@ -36,7 +36,7 @@ class TabsAdapter(val context: Context) :
         val userItem = getItem(position)
 
         holder.tvSubscribe.setOnClickListener {
-            onItemClickListener?.invoke(position)
+            onItemClickListener?.invoke(userItem)
             Log.d("MyLog","${userItem.enabled}")
 
         }
@@ -64,12 +64,12 @@ class TabsAdapter(val context: Context) :
         return  Glide.with(holder.view.context).load(picUrl).into(holder.roundImage)
     }
 
-    fun modifyList(list: List<UserItem>) {
+    fun modifyList(list: List<UserItemSubscribe>) {
         unfilteredlist = list
         submitList(list)
     }
     fun filter(query: CharSequence?) {
-        val list = mutableListOf<UserItem>()
+        val list = mutableListOf<UserItemSubscribe>()
 
         if (!query.isNullOrEmpty()) {
             list.addAll(unfilteredlist.filter {

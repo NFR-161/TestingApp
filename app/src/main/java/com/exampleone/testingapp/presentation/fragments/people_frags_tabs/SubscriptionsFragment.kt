@@ -11,9 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentSubscriptionsBinding
-import com.exampleone.testingapp.domain.UserItem
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.TabsAdapter
-import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
+import com.exampleone.testingapp.domain.UserItemSubscribe
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribeAdapter
 import com.exampleone.testingapp.presentation.viewmodel.SubscripViewModel
 
 class SubscriptionsFragment : Fragment() {
@@ -24,7 +23,7 @@ class SubscriptionsFragment : Fragment() {
         FragmentSubscriptionsBinding.inflate(layoutInflater)
     }
 
-    lateinit var tabsAdapter: TabsAdapter
+    lateinit var subscribeAdapter: SubscribeAdapter
     private val subscripViewModel:SubscripViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -35,9 +34,9 @@ class SubscriptionsFragment : Fragment() {
         Log.d("MyLog","SubscriptionsFragment")
         setHasOptionsMenu(true)
         initRecyclerView()
-        initViewModel()
+//        initViewModel()
 //        changeEnableState()
-        initAdapterItem()
+//        initAdapterItem()
         return binding.root
     }
     private fun initRecyclerView() {
@@ -45,42 +44,42 @@ class SubscriptionsFragment : Fragment() {
         val recyclerView = binding.rvRecycler
         val manager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = manager
-        tabsAdapter = TabsAdapter(context as FragmentActivity)
-        recyclerView.adapter = tabsAdapter
+        subscribeAdapter = SubscribeAdapter(context as FragmentActivity)
+        recyclerView.adapter = subscribeAdapter
         recyclerView.itemAnimator = null
 
     }
 
-    private fun initViewModel() {
-        with(subscripViewModel) {
-            clear()
-            insertUserList(dataRepository.getSubscripList())
-            users.observe(viewLifecycleOwner) {
-                tabsAdapter.modifyList(it)
-            }
-            searchText.observe(viewLifecycleOwner) {
-                tabsAdapter.filter(it)
-            }
-        }
-    }
+//    private fun initViewModel() {
+//        with(subscripViewModel) {
+//            clear()
+//            insertUserList(dataRepository.getSubscripList())
+//            users.observe(viewLifecycleOwner) {
+//                subscribeAdapter.modifyList(it)
+//            }
+//            searchText.observe(viewLifecycleOwner) {
+//                subscribeAdapter.filter(it)
+//            }
+//        }
+//    }
 
 //    private fun changeEnableState() {
-//        tabsAdapter.onItemClickListener = {
+//        subscribeAdapter.onItemClickListener = {
 //            subscripViewModel.updateTask(it.copy(enabled = !it.enabled))
 //            Log.d("MyLog"," from subscrip $it")
 //        }
 //    }
-private fun initAdapterItem() {
-    tabsAdapter.onItemClickListener = { position ->
-        val listOfPeople = tabsAdapter.currentList.toMutableList()
-        val userItem = listOfPeople [position]
-        listOfPeople [position] = UserItem(
-            id = userItem.id,
-            name = userItem.name,
-            enabled = !userItem.enabled,
-            picUrl = userItem.picUrl
-        )
-        tabsAdapter.submitList(listOfPeople )
-    }
-}
+//private fun initAdapterItem() {
+//    subscribeAdapter.onItemClickListener = { position ->
+//        val listOfPeople = subscribeAdapter.currentList.toMutableList()
+//        val userItem = listOfPeople [position]
+//        listOfPeople [position] = UserItemSubscribe(
+//            id = userItem.id,
+//            name = userItem.name,
+//            enabled = !userItem.enabled,
+//            picUrl = userItem.picUrl
+//        )
+//        subscribeAdapter.submitList(listOfPeople )
+//    }
+//}
 }

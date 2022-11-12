@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.exampleone.testingapp.R
+import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentAccountBinding
 import com.exampleone.testingapp.presentation.adapters.ChroniclesAdapter
 import com.exampleone.testingapp.presentation.adapters.MomentsAdapter
 import com.exampleone.testingapp.presentation.adapters.ProfileAdapter
+import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
 
 class AccountFragment : Fragment() {
 

@@ -1,6 +1,5 @@
 package com.exampleone.testingapp.domain.useCases
 
-import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.domain.UserRepository
 
 class ClearListUseCase(private val userRepository: UserRepository) {

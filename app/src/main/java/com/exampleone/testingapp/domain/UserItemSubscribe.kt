@@ -1,6 +1,6 @@
 package com.exampleone.testingapp.domain
 
-data class UserItem(
+data class UserItemSubscribe(
     var id: Int,
     var enabled: Boolean,
     var name: String,

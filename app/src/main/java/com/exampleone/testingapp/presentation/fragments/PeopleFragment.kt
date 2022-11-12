@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
+import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
 import com.exampleone.testingapp.presentation.viewmodel.MutuallyViewModel
@@ -24,9 +25,9 @@ class PeopleFragment : Fragment() {
         FragmentPeopleBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: SubViewModel by activityViewModels()
-    private val subscripViewModel:SubscripViewModel by activityViewModels()
-    private val mutuallyViewModel:MutuallyViewModel by activityViewModels()
+    private val subViewModel: SubViewModel by activityViewModels()
+    private val subscripViewModel: SubscripViewModel by activityViewModels()
+    private val mutuallyViewModel: MutuallyViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -34,7 +35,7 @@ class PeopleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("MyLog"," PeopleFragment")
+        Log.d("MyLog", " PeopleFragment")
         test()
         initAppbar()
         return binding.root
@@ -52,7 +53,7 @@ class PeopleFragment : Fragment() {
         binding.fragmentPeopleToolbar.title = getString(R.string.fragment_people_title)
     }
 
-    private fun initPager(){
+    private fun initPager() {
         binding.pager.adapter = PeopleStateAdapter(requireActivity())
         val tabLayoutMediator = binding.tabLayout.let {
             binding.pager.let { it1 ->
@@ -77,8 +78,10 @@ class PeopleFragment : Fragment() {
         }
         tabLayoutMediator.attach()
     }
+
     fun test() {
-        val searchView = binding.fragmentPeopleToolbar.menu.findItem(R.id.search).actionView as SearchView
+        val searchView =
+            binding.fragmentPeopleToolbar.menu.findItem(R.id.search).actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -86,7 +89,7 @@ class PeopleFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    viewModel.initSearchText(newText)
+                    subViewModel.initSearchText(newText)
                     subscripViewModel.initSearchText(newText)
                     mutuallyViewModel.initSearchText(newText)
                 }

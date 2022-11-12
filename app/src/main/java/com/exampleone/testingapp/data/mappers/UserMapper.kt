@@ -1,18 +1,18 @@
 package com.exampleone.testingapp.data.mappers
 
 import com.exampleone.testingapp.data.UserModel
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.UserItemSubscribe
 
 class UserMapper {
 
-    fun mapUserItemToDbModel(userItem: UserItem) = UserModel(
-        id = userItem.id,
-        enabled = userItem.enabled,
-        name = userItem.name,
-        picUrl = userItem.picUrl
+    fun mapUserItemSubscribeToDbModel(userItemSubscribe: UserItemSubscribe) = UserModel(
+        id = userItemSubscribe.id,
+        enabled = userItemSubscribe.enabled,
+        name = userItemSubscribe.name,
+        picUrl = userItemSubscribe.picUrl
     )
 
-    fun mapDbModelToUserItem(userModel: UserModel) = UserItem(
+    fun mapDbModelToUserItemSubscribe(userModel: UserModel) = UserItemSubscribe(
         id = userModel.id,
         enabled = userModel.enabled,
         name = userModel.name,

@@ -1,10 +1,10 @@
 package com.exampleone.testingapp.data
 
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.UserItemSubscribe
 import com.github.javafaker.Faker
 
 class DataRepository {
-    lateinit var userItem: UserItem
+    lateinit var userItemSubscribe: UserItemSubscribe
     private val faker = Faker()
     private val photoUrl = listOf(
         "https://vse-footbolki.ru/image/cache/catalog/vsm/0/2/2323/2323771/previews/people_1_pad_front_white_700-280x280.jpg",
@@ -19,11 +19,13 @@ class DataRepository {
         "https://imagetext2.ru/pics_max/imagetext_ru_27626.jpg"
     )
 
-    fun getPersonListItem(): UserItem {
+
+
+    fun getPersonListItem(): UserItemSubscribe {
         var counter = 0
         for (i in 1..40) {
             if (counter < 9) {
-                userItem = UserItem(
+                userItemSubscribe = UserItemSubscribe(
                     id = 0,
                     enabled = true,
                     name = faker.name().name(),
@@ -32,7 +34,7 @@ class DataRepository {
 
                 counter++
             } else {
-                userItem = UserItem(
+                userItemSubscribe = UserItemSubscribe(
                     id = 0,
                     enabled = true,
                     name = faker.name().name(),
@@ -42,7 +44,7 @@ class DataRepository {
                 counter = 0
             }
         }
-        return userItem
+        return userItemSubscribe
     }
 
     fun getSubList(): List<UserModel> {

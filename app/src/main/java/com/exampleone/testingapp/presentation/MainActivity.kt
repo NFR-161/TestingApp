@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.exampleone.testingapp.R
+import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.ActivityMainBinding
 import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
 
@@ -15,7 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
-    lateinit var viewModel: SubViewModel
+    val dataRepository = DataRepository()
+    lateinit var  subViewModel: SubViewModel
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -26,14 +30,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         Log.d("MyLog"," MainActivity")
+
+        initSubScribeList()
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.place_holder) as NavHostFragment
         navController = navHostFragment.navController
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        Log.d("MyLog"," from search: onCreateOptionsMenu")
-        return super.onCreateOptionsMenu(menu)
+    private fun initSubScribeList(){
+        subViewModel = ViewModelProvider(this)[SubViewModel::class.java]
+        subViewModel.clear()
+        subViewModel.insertUserList(dataRepository.getSubList())
+
     }
+
 }

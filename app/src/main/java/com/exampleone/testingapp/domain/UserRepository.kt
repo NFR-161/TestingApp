@@ -7,14 +7,14 @@ interface UserRepository {
 
     suspend fun insertUserLIst(userModel: List<UserModel>)
 
-    suspend fun insertUser(userItem: UserItem)
+    suspend fun insertUser(userItemSubscribe: UserItemSubscribe)
 
     suspend fun clear()
 
-    suspend fun updateUser(userItem: UserItem)
+    suspend fun updateUser(userItemSubscribe: UserItemSubscribe)
 
-    fun searchDataBase(search:String): LiveData<List<UserItem>>
+    fun searchDataBase(search:String): LiveData<List<UserItemSubscribe>>
 
-    fun getAllUsers(): LiveData<List<UserItem>>
+    fun getAllUsersForSubscribe(): LiveData<List<UserItemSubscribe>>
 
 }

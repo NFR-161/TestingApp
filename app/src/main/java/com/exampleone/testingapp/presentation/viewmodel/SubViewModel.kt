@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.exampleone.testingapp.data.RepositoryImpl
 import com.exampleone.testingapp.data.UserModel
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.UserItemSubscribe
 import com.exampleone.testingapp.domain.useCases.*
 import kotlinx.coroutines.launch
 
@@ -28,12 +28,12 @@ class SubViewModel(application: Application) : AndroidViewModel(application) {
         _searchText.postValue(text)
     }
 
-    fun insert(userItem: UserItem) = viewModelScope.launch {
-        insertUserUseCase(userItem)
+    fun insert(userItemSubscribe: UserItemSubscribe) = viewModelScope.launch {
+        insertUserUseCase(userItemSubscribe)
     }
 
-    fun updateTask(userItem: UserItem) = viewModelScope.launch {
-        updateUserUseCase(userItem)
+    fun updateTask(userItemSubscribe: UserItemSubscribe) = viewModelScope.launch {
+        updateUserUseCase(userItemSubscribe)
     }
 
     fun insertUserList(userModel: List<UserModel>) = viewModelScope.launch {
@@ -44,7 +44,7 @@ class SubViewModel(application: Application) : AndroidViewModel(application) {
         clearListUseCase.clear()
     }
 
-    fun searchDataBase(search: String): LiveData<List<UserItem>> {
+    fun searchDataBase(search: String): LiveData<List<UserItemSubscribe>> {
         return repository.searchDataBase(search)
     }
 

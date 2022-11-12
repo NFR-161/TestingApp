@@ -4,5 +4,5 @@ import com.exampleone.testingapp.domain.UserRepository
 
 class GetUserListUseCase(private val userRepository: UserRepository) {
 
-    val users = userRepository.getAllUsers()
+    val users = userRepository.getAllUsersForSubscribe()
 }
