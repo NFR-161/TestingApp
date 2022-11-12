@@ -2,6 +2,7 @@ package com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapt
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,16 @@ class TabsAdapter(val context: Context) :
 
         holder.tvSubscribe.setOnClickListener {
             onItemClickListener?.invoke(position)
+            Log.d("MyLog","${userItem.enabled}")
+
+        }
+
+        if (userItem.enabled) {
+            holder.tvSubscribe.text = context.resources.getText(R.string.subscribe)
+            holder.tvSubscribe.setTextColor(context.resources.getColor(R.color.purple))
+        } else {
+            holder.tvSubscribe.text = context.resources.getText(R.string.unsubscribe)
+            holder.tvSubscribe.setTextColor(context.resources.getColor(R.color.light_grey))
         }
 
         launchGlide(holder,userItem.picUrl)
@@ -69,5 +80,10 @@ class TabsAdapter(val context: Context) :
         submitList(list)
     }
 
+    override fun onViewRecycled(holder: TempAdapterHolder) {
+        super.onViewRecycled(holder)
+        holder.tvSubscribe.text = context.resources.getText(R.string.subscribe)
+        holder.tvSubscribe.setTextColor(context.resources.getColor(R.color.purple))
+    }
 }
 

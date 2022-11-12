@@ -1,6 +1,7 @@
 package com.exampleone.testingapp.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class AccountFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("MyLog","AccountFragment")
         return binding.root
     }
 

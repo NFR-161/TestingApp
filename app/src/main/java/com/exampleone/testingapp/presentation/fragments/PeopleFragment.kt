@@ -1,6 +1,7 @@
 package com.exampleone.testingapp.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 
@@ -33,6 +34,7 @@ class PeopleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("MyLog"," PeopleFragment")
         test()
         initAppbar()
         return binding.root

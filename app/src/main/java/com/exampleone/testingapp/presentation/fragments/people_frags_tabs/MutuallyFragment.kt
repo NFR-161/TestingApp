@@ -1,6 +1,7 @@
 package com.exampleone.testingapp.presentation.fragments.people_frags_tabs
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentMutuallyBinding
+import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.TabsAdapter
 import com.exampleone.testingapp.presentation.viewmodel.MutuallyViewModel
 import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
@@ -33,11 +35,12 @@ class MutuallyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        Log.d("MyLog","MutuallyFragment")
         setHasOptionsMenu(true)
         initRecyclerView()
         initViewModel()
-
+//        changeEnableState()
+        initAdapterItem()
         return binding.root
     }
 
@@ -64,4 +67,18 @@ class MutuallyFragment : Fragment() {
         }
     }
 
+private fun initAdapterItem() {
+    tabsAdapter.onItemClickListener = { position ->
+        val listOfPeople = tabsAdapter.currentList.toMutableList()
+        val userItem = listOfPeople [position]
+        listOfPeople [position] = UserItem(
+            id = userItem.id,
+            name = userItem.name,
+            enabled = !userItem.enabled,
+            picUrl = userItem.picUrl
+        )
+        mutuallyViewModel.updateTask(userItem.copy(enabled = !userItem.enabled))
+        tabsAdapter.submitList(listOfPeople )
+    }
+}
 }

@@ -48,7 +48,7 @@ class DataRepository {
     fun getSubList(): List<UserModel> {
         val list = mutableListOf<UserModel>()
         var counter = 0
-        for (i in 1..6) {
+        for (i in 1..20) {
             if (counter < 9) {
                 list.add (UserModel(
                     id = 0,
@@ -75,7 +75,7 @@ class DataRepository {
     fun getSubscripList(): List<UserModel> {
         val list = mutableListOf<UserModel>()
         var counter = 5
-        for (i in 3..6) {
+        for (i in 3..20) {
             if (counter < 9) {
                 list.add (UserModel(
                     id = 0,
@@ -102,7 +102,7 @@ class DataRepository {
     fun getMutList(): List<UserModel> {
         val list = mutableListOf<UserModel>()
         var counter = 3
-        for (i in 1..9) {
+        for (i in 1..20) {
             if (counter < 9) {
                 list.add (UserModel(
                     id = 0,
