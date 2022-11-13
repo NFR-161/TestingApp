@@ -5,16 +5,14 @@ import com.exampleone.testingapp.data.UserModel
 
 interface UserRepository {
 
-    suspend fun insertUserLIst(userModel: List<UserModel>)
+    suspend fun insertUserList()
 
-    suspend fun insertUser(userItemSubscribe: UserItemSubscribe)
+    suspend fun insertUser(userItem: UserItem)
 
     suspend fun clear()
 
-    suspend fun updateUser(userItemSubscribe: UserItemSubscribe)
+    suspend fun updateUser(userItem: UserItem)
 
-    fun searchDataBase(search:String): LiveData<List<UserItemSubscribe>>
-
-    fun getAllUsersForSubscribe(): LiveData<List<UserItemSubscribe>>
+    fun getAllUsersForSubscribe(): LiveData<List<UserItem>>
 
 }

@@ -13,17 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.domain.UserItemSubscribe
+import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.presentation.adapters.utils.PeopleItemDiffCallback
 import java.util.*
 
 class SubscribeAdapter(val context: Context) :
-    ListAdapter<UserItemSubscribe, SubscribeAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
+    ListAdapter<UserItem, SubscribeAdapter.TempAdapterHolder>(PeopleItemDiffCallback()) {
 
-    private var unfilteredlist = listOf<UserItemSubscribe>()
+    private var unfilteredlist = listOf<UserItem>()
 
-
-    var onItemClickListener: ((UserItemSubscribe) -> Unit)? = null
+    var onItemClickListener: ((UserItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TempAdapterHolder {
         val layout = R.layout.items_people
@@ -64,12 +63,12 @@ class SubscribeAdapter(val context: Context) :
         return  Glide.with(holder.view.context).load(picUrl).into(holder.roundImage)
     }
 
-    fun modifyList(list: List<UserItemSubscribe>) {
+    fun modifyList(list: List<UserItem>) {
         unfilteredlist = list
         submitList(list)
     }
     fun filter(query: CharSequence?) {
-        val list = mutableListOf<UserItemSubscribe>()
+        val list = mutableListOf<UserItem>()
 
         if (!query.isNullOrEmpty()) {
             list.addAll(unfilteredlist.filter {

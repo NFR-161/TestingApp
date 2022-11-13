@@ -12,14 +12,13 @@ import androidx.navigation.fragment.NavHostFragment
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.ActivityMainBinding
+import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-
-    val dataRepository = DataRepository()
-    lateinit var  subViewModel: SubViewModel
+    lateinit var subViewModel: SubViewModel
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -29,9 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        Log.d("MyLog"," MainActivity")
-
-        initSubScribeList()
+        Log.d("MyLog", " MainActivity")
+        initData()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.place_holder) as NavHostFragment
@@ -39,11 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun initSubScribeList(){
+    private fun initData() {
         subViewModel = ViewModelProvider(this)[SubViewModel::class.java]
         subViewModel.clear()
-        subViewModel.insertUserList(dataRepository.getSubList())
-
+        subViewModel.insertUserList()
     }
 
 }

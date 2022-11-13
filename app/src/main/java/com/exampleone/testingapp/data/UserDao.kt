@@ -22,7 +22,5 @@ interface UserDao {
     @Query("SELECT * FROM user_data_table")
     fun getAllUsersForSubscribe(): LiveData<List<UserModel>>
 
-    @Query("SELECT * FROM user_data_table WHERE user_name LIKE :searchQuery ")
-    fun searchDataBase(searchQuery:String): LiveData<List<UserModel>>
 
 }

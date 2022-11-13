@@ -6,20 +6,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.exampleone.testingapp.data.RepositoryImpl
-import com.exampleone.testingapp.data.UserModel
-import com.exampleone.testingapp.domain.UserItemSubscribe
-import com.exampleone.testingapp.domain.useCases.*
+import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.useCases.GetUserListUseCase
+import com.exampleone.testingapp.domain.useCases.InsertUserUseCase
+import com.exampleone.testingapp.domain.useCases.UpdateUserUseCase
 import kotlinx.coroutines.launch
 
 class MutuallyViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = RepositoryImpl(application)
 
-    private val insertListUseCase = InsertUserListUseCase(repository)
     private val getUserListUseCase = GetUserListUseCase(repository)
     private val insertUserUseCase = InsertUserUseCase(repository)
     private val updateUserUseCase = UpdateUserUseCase(repository)
-    private val clearListUseCase = ClearListUseCase(repository)
 
     private var _searchText = MutableLiveData<String>()
     var searchText: LiveData<String> = _searchText
@@ -30,23 +29,12 @@ class MutuallyViewModel(application: Application) : AndroidViewModel(application
         _searchText.postValue(text)
     }
 
-    fun insert(userItemSubscribe: UserItemSubscribe) = viewModelScope.launch {
-        insertUserUseCase(userItemSubscribe)
+    fun insert(userItem: UserItem) = viewModelScope.launch {
+        insertUserUseCase(userItem)
     }
 
-    fun updateTask(userItemSubscribe: UserItemSubscribe) = viewModelScope.launch {
-        updateUserUseCase(userItemSubscribe)
+    fun updateTask(userItem: UserItem) = viewModelScope.launch {
+        updateUserUseCase(userItem)
     }
 
-    fun insertUserList(userModel: List<UserModel>) = viewModelScope.launch {
-        insertListUseCase(userModel)
-    }
-
-    fun clear() = viewModelScope.launch {
-        clearListUseCase.clear()
-    }
-
-    fun searchDataBase(search: String): LiveData<List<UserItemSubscribe>> {
-        return repository.searchDataBase(search)
-    }
 }

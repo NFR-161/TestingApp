@@ -1,10 +1,13 @@
 package com.exampleone.testingapp.data
 
-import com.exampleone.testingapp.domain.UserItemSubscribe
+import android.util.Log
+import com.exampleone.testingapp.domain.UserItem
 import com.github.javafaker.Faker
+import kotlin.random.Random
 
 class DataRepository {
-    lateinit var userItemSubscribe: UserItemSubscribe
+
+    lateinit var userItem: UserItem
     private val faker = Faker()
     private val photoUrl = listOf(
         "https://vse-footbolki.ru/image/cache/catalog/vsm/0/2/2323/2323771/previews/people_1_pad_front_white_700-280x280.jpg",
@@ -19,111 +22,18 @@ class DataRepository {
         "https://imagetext2.ru/pics_max/imagetext_ru_27626.jpg"
     )
 
-
-
-    fun getPersonListItem(): UserItemSubscribe {
-        var counter = 0
-        for (i in 1..40) {
-            if (counter < 9) {
-                userItemSubscribe = UserItemSubscribe(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                )
-
-                counter++
-            } else {
-                userItemSubscribe = UserItemSubscribe(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                )
-
-                counter = 0
-            }
-        }
-        return userItemSubscribe
-    }
-
     fun getSubList(): List<UserModel> {
         val list = mutableListOf<UserModel>()
-        var counter = 0
-        for (i in 1..20) {
-            if (counter < 9) {
-                list.add (UserModel(
+        for (i in 0 until 30) {
+            Log.d("MyLog","$i")
+            list.add(
+                UserModel(
                     id = 0,
-                    enabled = true,
+                    enabled = Random.nextBoolean(),
                     name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                ))
-
-                counter++
-            } else {
-                list.add (UserModel(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                ))
-
-                counter = 0
-            }
-        }
-        return list
-    }
-
-    fun getSubscripList(): List<UserModel> {
-        val list = mutableListOf<UserModel>()
-        var counter = 5
-        for (i in 3..20) {
-            if (counter < 9) {
-                list.add (UserModel(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                ))
-
-                counter++
-            } else {
-                list.add (UserModel(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                ))
-
-                counter = 0
-            }
-        }
-        return list
-    }
-
-    fun getMutList(): List<UserModel> {
-        val list = mutableListOf<UserModel>()
-        var counter = 3
-        for (i in 1..20) {
-            if (counter < 9) {
-                list.add (UserModel(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                ))
-
-                counter++
-            } else {
-                list.add (UserModel(
-                    id = 0,
-                    enabled = true,
-                    name = faker.name().name(),
-                    picUrl = photoUrl[counter]
-                ))
-
-                counter = 0
-            }
+                    picUrl = photoUrl[i % photoUrl.size]
+                )
+            )
         }
         return list
     }

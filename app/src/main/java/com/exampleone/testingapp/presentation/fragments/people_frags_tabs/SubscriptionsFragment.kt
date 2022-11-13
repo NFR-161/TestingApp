@@ -2,22 +2,19 @@ package com.exampleone.testingapp.presentation.fragments.people_frags_tabs
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentSubscriptionsBinding
-import com.exampleone.testingapp.domain.UserItemSubscribe
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribeAdapter
 import com.exampleone.testingapp.presentation.viewmodel.SubscripViewModel
 
 class SubscriptionsFragment : Fragment() {
 
-    private val dataRepository = DataRepository()
 
     private val binding by lazy {
         FragmentSubscriptionsBinding.inflate(layoutInflater)
@@ -34,9 +31,8 @@ class SubscriptionsFragment : Fragment() {
         Log.d("MyLog","SubscriptionsFragment")
         setHasOptionsMenu(true)
         initRecyclerView()
-//        initViewModel()
-//        changeEnableState()
-//        initAdapterItem()
+        initViewModel()
+        changeEnableState()
         return binding.root
     }
     private fun initRecyclerView() {
@@ -50,36 +46,21 @@ class SubscriptionsFragment : Fragment() {
 
     }
 
-//    private fun initViewModel() {
-//        with(subscripViewModel) {
-//            clear()
-//            insertUserList(dataRepository.getSubscripList())
-//            users.observe(viewLifecycleOwner) {
-//                subscribeAdapter.modifyList(it)
-//            }
-//            searchText.observe(viewLifecycleOwner) {
-//                subscribeAdapter.filter(it)
-//            }
-//        }
-//    }
+    private fun initViewModel() {
+        with(subscripViewModel) {
+            users.observe(viewLifecycleOwner) {
+                val list = it.filter { !it.enabled }
+                subscribeAdapter.modifyList(list)
+            }
+            searchText.observe(viewLifecycleOwner) {
+                subscribeAdapter.filter(it)
+            }
+        }
+    }
 
-//    private fun changeEnableState() {
-//        subscribeAdapter.onItemClickListener = {
-//            subscripViewModel.updateTask(it.copy(enabled = !it.enabled))
-//            Log.d("MyLog"," from subscrip $it")
-//        }
-//    }
-//private fun initAdapterItem() {
-//    subscribeAdapter.onItemClickListener = { position ->
-//        val listOfPeople = subscribeAdapter.currentList.toMutableList()
-//        val userItem = listOfPeople [position]
-//        listOfPeople [position] = UserItemSubscribe(
-//            id = userItem.id,
-//            name = userItem.name,
-//            enabled = !userItem.enabled,
-//            picUrl = userItem.picUrl
-//        )
-//        subscribeAdapter.submitList(listOfPeople )
-//    }
-//}
+    private fun changeEnableState() {
+        subscribeAdapter.onItemClickListener = {
+            subscripViewModel.updateTask(it.copy(enabled = !it.enabled))
+        }
+    }
 }
