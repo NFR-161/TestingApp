@@ -11,12 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.DataRepository
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
-import com.exampleone.testingapp.presentation.viewmodel.MutuallyViewModel
 import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
-import com.exampleone.testingapp.presentation.viewmodel.SubscripViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PeopleFragment : Fragment() {
@@ -24,11 +21,7 @@ class PeopleFragment : Fragment() {
     private val binding by lazy {
         FragmentPeopleBinding.inflate(layoutInflater)
     }
-
     private val subViewModel: SubViewModel by activityViewModels()
-    private val subscripViewModel: SubscripViewModel by activityViewModels()
-    private val mutuallyViewModel: MutuallyViewModel by activityViewModels()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,7 +72,7 @@ class PeopleFragment : Fragment() {
         tabLayoutMediator.attach()
     }
 
-    fun test() {
+    private fun test() {
         val searchView =
             binding.fragmentPeopleToolbar.menu.findItem(R.id.search).actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -90,8 +83,6 @@ class PeopleFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     subViewModel.initSearchText(newText)
-                    subscripViewModel.initSearchText(newText)
-                    mutuallyViewModel.initSearchText(newText)
                 }
                 return false
             }

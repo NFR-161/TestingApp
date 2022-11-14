@@ -10,8 +10,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.databinding.FragmentMutuallyBinding
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribeAdapter
-import com.exampleone.testingapp.presentation.viewmodel.MutuallyViewModel
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.TabsAdapter
+import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
 
 
 class MutuallyFragment : Fragment() {
@@ -20,8 +20,9 @@ class MutuallyFragment : Fragment() {
         FragmentMutuallyBinding.inflate(layoutInflater)
     }
 
-    lateinit var subscribeAdapter: SubscribeAdapter
-    private val mutuallyViewModel:MutuallyViewModel by activityViewModels()
+    lateinit var tabsAdapter: TabsAdapter
+//    private val mutuallyViewModel:MutuallyViewModel by activityViewModels()
+private val subViewModel: SubViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,25 +43,25 @@ class MutuallyFragment : Fragment() {
         val recyclerView = binding.rvRecycler
         val manager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = manager
-        subscribeAdapter = SubscribeAdapter(context as FragmentActivity)
-        recyclerView.adapter = subscribeAdapter
+        tabsAdapter = TabsAdapter(context as FragmentActivity)
+        recyclerView.adapter = tabsAdapter
         recyclerView.itemAnimator = null
 
     }
 
     private fun initViewModel() {
-        with(mutuallyViewModel) {
+        with(subViewModel) {
             users.observe(viewLifecycleOwner) {
-                subscribeAdapter.modifyList(it)
+                tabsAdapter.modifyList(it)
             }
             searchText.observe(viewLifecycleOwner) {
-                subscribeAdapter.filter(it)
+                tabsAdapter.filter(it)
             }
         }
     }
     private fun changeEnableState() {
-        subscribeAdapter.onItemClickListener = {
-            mutuallyViewModel.updateTask(it.copy(enabled = !it.enabled))
+        tabsAdapter.onItemClickListener = {
+            subViewModel.updateTask(it.copy(enabled = !it.enabled))
 
         }
     }

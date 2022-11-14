@@ -15,7 +15,6 @@ class RepositoryImpl(application: Application) : UserRepository {
 
     private val userDao = DataBase.getInstance(application).userDAO
     private val mapper = UserMapper()
-
     private val dataRepository = DataRepository()
 
     override suspend fun insertUserList() {

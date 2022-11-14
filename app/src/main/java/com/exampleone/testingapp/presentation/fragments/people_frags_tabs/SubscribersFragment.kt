@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.databinding.FragmentSubscribersBinding
-import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.SubscribeAdapter
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.TabsAdapter
 import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
 
 
@@ -21,7 +21,7 @@ class SubscribersFragment : Fragment() {
         FragmentSubscribersBinding.inflate(layoutInflater)
     }
 
-    lateinit var subscribeAdapter: SubscribeAdapter
+    lateinit var tabsAdapter: TabsAdapter
     private val subViewModel: SubViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -43,8 +43,8 @@ class SubscribersFragment : Fragment() {
         val recyclerView = binding.rvRecycler
         val manager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = manager
-        subscribeAdapter = SubscribeAdapter(context as FragmentActivity)
-        recyclerView.adapter = subscribeAdapter
+        tabsAdapter = TabsAdapter(context as FragmentActivity)
+        recyclerView.adapter = tabsAdapter
         recyclerView.itemAnimator = null
     }
 
@@ -52,15 +52,15 @@ class SubscribersFragment : Fragment() {
         with(subViewModel) {
             users.observe(viewLifecycleOwner) {
             val list = it.filter { it.enabled }
-                subscribeAdapter.modifyList(list)
+                tabsAdapter.modifyList(list)
             }
             searchText.observe(viewLifecycleOwner) {
-                subscribeAdapter.filter(it)
+                tabsAdapter.filter(it)
             }
         }
     }
         private fun changeEnableState() {
-       subscribeAdapter.onItemClickListener = {
+       tabsAdapter.onItemClickListener = {
             subViewModel.updateTask(it.copy(enabled = !it.enabled))
         }
     }
