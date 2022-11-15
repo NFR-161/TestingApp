@@ -6,8 +6,9 @@ import androidx.lifecycle.Transformations
 import com.exampleone.testingapp.data.mappers.UserMapper
 import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.domain.UserRepository
+import javax.inject.Inject
 
-class RepositoryImpl(private val userDao: UserDao) : UserRepository {
+class RepositoryImpl @Inject constructor (private val userDao: UserDao) : UserRepository {
 
     private val mapper = UserMapper()
     private val dataRepository = DataRepository()

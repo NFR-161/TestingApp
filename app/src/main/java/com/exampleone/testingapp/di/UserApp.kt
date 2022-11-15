@@ -5,8 +5,8 @@ import com.github.javafaker.App
 
 class UserApp : Application() {
 
-    companion object {
-        fun getApp() = Application()
+    val component by lazy {
+        DaggerApplicationComponent.factory().create(this)
     }
 
 }
