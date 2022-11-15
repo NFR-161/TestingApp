@@ -1,7 +1,7 @@
 package com.exampleone.testingapp.data
 
 import android.util.Log
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.user.UserItem
 import com.github.javafaker.Faker
 import kotlin.random.Random
 

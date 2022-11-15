@@ -1,7 +1,7 @@
 package com.exampleone.testingapp.data.mappers
 
 import com.exampleone.testingapp.data.UserModel
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.user.UserItem
 
 class UserMapper {
 

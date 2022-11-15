@@ -3,8 +3,8 @@ package com.exampleone.testingapp.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.exampleone.testingapp.data.mappers.UserMapper
-import com.exampleone.testingapp.domain.UserItem
-import com.exampleone.testingapp.domain.UserRepository
+import com.exampleone.testingapp.domain.user.UserItem
+import com.exampleone.testingapp.domain.user.UserRepository
 import javax.inject.Inject
 
 

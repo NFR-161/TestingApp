@@ -1,4 +1,4 @@
-package com.exampleone.testingapp.domain
+package com.exampleone.testingapp.domain.user
 
 data class UserItem(
     var id: Int,

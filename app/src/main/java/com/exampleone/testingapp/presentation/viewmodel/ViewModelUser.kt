@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.user.UserItem
 import com.exampleone.testingapp.domain.useCases.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject

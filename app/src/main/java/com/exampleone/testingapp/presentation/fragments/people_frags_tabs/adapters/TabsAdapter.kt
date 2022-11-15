@@ -2,7 +2,6 @@ package com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapt
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ViewTarget
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.domain.UserItem
+import com.exampleone.testingapp.domain.user.UserItem
 import com.exampleone.testingapp.presentation.adapters.utils.PeopleItemDiffCallback
 import java.util.*
 

@@ -1,7 +1,7 @@
-package com.exampleone.testingapp.domain
+package com.exampleone.testingapp.domain.user
 
 import androidx.lifecycle.LiveData
-import com.exampleone.testingapp.data.UserModel
+import com.exampleone.testingapp.domain.user.UserItem
 
 interface UserRepository {
 
