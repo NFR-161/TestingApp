@@ -8,11 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.exampleone.testingapp.R
-import com.exampleone.testingapp.data.DataBase
-import com.exampleone.testingapp.data.RepositoryImpl
 import com.exampleone.testingapp.databinding.ActivityMainBinding
 import com.exampleone.testingapp.di.UserApp
-import com.exampleone.testingapp.domain.useCases.*
 import com.exampleone.testingapp.presentation.viewmodel.ViewFactoryUser
 import com.exampleone.testingapp.presentation.viewmodel.ViewModelUser
 import javax.inject.Inject
