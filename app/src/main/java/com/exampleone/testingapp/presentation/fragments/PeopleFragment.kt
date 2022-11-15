@@ -12,7 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
-import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
+import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.PeopleStateAdapter
 import com.exampleone.testingapp.presentation.viewmodel.ViewModelUser
 import com.google.android.material.tabs.TabLayoutMediator
 

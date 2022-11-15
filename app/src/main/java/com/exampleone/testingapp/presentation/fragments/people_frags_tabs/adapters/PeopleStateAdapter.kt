@@ -1,4 +1,4 @@
-package com.exampleone.testingapp.presentation.adapters
+package com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
