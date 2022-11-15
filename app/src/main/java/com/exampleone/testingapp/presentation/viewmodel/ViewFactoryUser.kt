@@ -3,8 +3,9 @@ package com.exampleone.testingapp.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.exampleone.testingapp.domain.useCases.*
+import javax.inject.Inject
 
-class ViewFactoryUser(
+class ViewFactoryUser @Inject constructor (
     private val insertUserListUseCase: InsertUserListUseCase,
     private val getUserListUseCase: GetUserListUseCase,
     private val insertUserUseCase: InsertUserUseCase,

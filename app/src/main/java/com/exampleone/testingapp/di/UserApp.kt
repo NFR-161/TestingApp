@@ -1,12 +1,9 @@
 package com.exampleone.testingapp.di
 
 import android.app.Application
-import com.github.javafaker.App
+import dagger.hilt.android.HiltAndroidApp
 
-class UserApp : Application() {
 
-    companion object {
-        fun getApp() = Application()
-    }
+@HiltAndroidApp
+class UserApp : Application()
 
-}

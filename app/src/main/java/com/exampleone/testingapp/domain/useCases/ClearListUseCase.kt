@@ -1,8 +1,9 @@
 package com.exampleone.testingapp.domain.useCases
 
 import com.exampleone.testingapp.domain.UserRepository
+import javax.inject.Inject
 
-class ClearListUseCase(private val userRepository: UserRepository) {
+class ClearListUseCase @Inject constructor (private val userRepository: UserRepository) {
 
     suspend fun clear() {
         return userRepository.clear()
