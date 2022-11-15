@@ -12,9 +12,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class SecondModule {
+class DataBaseModule {
 
     @Provides
+    @Singleton
       fun provideUserDao(@ApplicationContext application: Context): UserDao {
         return DataBase.getInstance(application).userDAO
     }
