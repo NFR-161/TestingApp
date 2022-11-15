@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
 import com.exampleone.testingapp.presentation.adapters.PeopleStateAdapter
-import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
+import com.exampleone.testingapp.presentation.viewmodel.ViewModelUser
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PeopleFragment : Fragment() {
@@ -21,7 +21,7 @@ class PeopleFragment : Fragment() {
     private val binding by lazy {
         FragmentPeopleBinding.inflate(layoutInflater)
     }
-    private val subViewModel: SubViewModel by activityViewModels()
+    private val viewModelUser: ViewModelUser by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,7 +82,7 @@ class PeopleFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    subViewModel.initSearchText(newText)
+                    viewModelUser.initSearchText(newText)
                 }
                 return false
             }

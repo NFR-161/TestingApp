@@ -1,24 +1,28 @@
 package com.exampleone.testingapp.presentation.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.exampleone.testingapp.data.RepositoryImpl
-import com.exampleone.testingapp.data.UserModel
 import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.domain.useCases.*
 import kotlinx.coroutines.launch
 
-class SubViewModel(application: Application) : AndroidViewModel(application) {
+class ViewModelUser(
+    val insertUserListUseCase: InsertUserListUseCase,
+    getUserListUseCase: GetUserListUseCase,
+    val insertUserUseCase: InsertUserUseCase,
+    val updateUserUseCase: UpdateUserUseCase,
+    private val clearListUseCase: ClearListUseCase
+) : ViewModel() {
 
-    private val repository = RepositoryImpl(application)
-    private val insertUserListUseCase = InsertUserListUseCase(repository)
-    private val getUserListUseCase = GetUserListUseCase(repository)
-    private val insertUserUseCase = InsertUserUseCase(repository)
-    private val updateUserUseCase = UpdateUserUseCase(repository)
-    private val clearListUseCase = ClearListUseCase(repository)
+//    private val repository = RepositoryImpl(application)
+
+
+//    private val insertUserListUseCase = InsertUserListUseCase(repository)
+//    private val getUserListUseCase = GetUserListUseCase(repository)
+//    private val insertUserUseCase = InsertUserUseCase(repository)
+//    private val updateUserUseCase = UpdateUserUseCase(repository)
+//    private val clearListUseCase = ClearListUseCase(repository)
 
 
     private var _searchText = MutableLiveData<String>()
@@ -41,6 +45,7 @@ class SubViewModel(application: Application) : AndroidViewModel(application) {
     fun insertUserList() = viewModelScope.launch {
         insertUserListUseCase()
     }
+
     fun clear() = viewModelScope.launch {
         clearListUseCase.clear()
     }

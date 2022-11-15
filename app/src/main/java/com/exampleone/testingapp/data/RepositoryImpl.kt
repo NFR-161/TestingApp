@@ -1,19 +1,14 @@
 package com.exampleone.testingapp.data
 
 import android.app.Application
-import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.exampleone.testingapp.data.mappers.UserMapper
 import com.exampleone.testingapp.domain.UserItem
 import com.exampleone.testingapp.domain.UserRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class RepositoryImpl(application: Application) : UserRepository {
+class RepositoryImpl(private val userDao: UserDao) : UserRepository {
 
-    private val userDao = DataBase.getInstance(application).userDAO
     private val mapper = UserMapper()
     private val dataRepository = DataRepository()
 

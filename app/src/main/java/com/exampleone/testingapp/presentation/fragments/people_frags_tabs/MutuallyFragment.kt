@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.databinding.FragmentMutuallyBinding
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.TabsAdapter
-import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
+import com.exampleone.testingapp.presentation.viewmodel.ViewModelUser
 
 
 class MutuallyFragment : Fragment() {
@@ -22,7 +22,7 @@ class MutuallyFragment : Fragment() {
 
     lateinit var tabsAdapter: TabsAdapter
 //    private val mutuallyViewModel:MutuallyViewModel by activityViewModels()
-private val subViewModel: SubViewModel by activityViewModels()
+private val viewModelUser: ViewModelUser by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +50,7 @@ private val subViewModel: SubViewModel by activityViewModels()
     }
 
     private fun initViewModel() {
-        with(subViewModel) {
+        with(viewModelUser) {
             users.observe(viewLifecycleOwner) {
                 tabsAdapter.modifyList(it)
             }
@@ -61,7 +61,7 @@ private val subViewModel: SubViewModel by activityViewModels()
     }
     private fun changeEnableState() {
         tabsAdapter.onItemClickListener = {
-            subViewModel.updateTask(it.copy(enabled = !it.enabled))
+            viewModelUser.updateTask(it.copy(enabled = !it.enabled))
 
         }
     }

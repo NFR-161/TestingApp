@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exampleone.testingapp.databinding.FragmentSubscribersBinding
 import com.exampleone.testingapp.presentation.fragments.people_frags_tabs.adapters.TabsAdapter
-import com.exampleone.testingapp.presentation.viewmodel.SubViewModel
+import com.exampleone.testingapp.presentation.viewmodel.ViewModelUser
 
 
 class SubscribersFragment : Fragment() {
@@ -22,7 +22,7 @@ class SubscribersFragment : Fragment() {
     }
 
     lateinit var tabsAdapter: TabsAdapter
-    private val subViewModel: SubViewModel by activityViewModels()
+    private val viewModelUser: ViewModelUser by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +49,7 @@ class SubscribersFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        with(subViewModel) {
+        with(viewModelUser) {
             users.observe(viewLifecycleOwner) {
             val list = it.filter { it.enabled }
                 tabsAdapter.modifyList(list)
@@ -61,7 +61,7 @@ class SubscribersFragment : Fragment() {
     }
         private fun changeEnableState() {
        tabsAdapter.onItemClickListener = {
-            subViewModel.updateTask(it.copy(enabled = !it.enabled))
+            viewModelUser.updateTask(it.copy(enabled = !it.enabled))
         }
     }
 
