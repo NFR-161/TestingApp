@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/round_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4.64dp"
+        android:background="@drawable/one"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/round_image" />
+
+    <TextView
+        android:id="@+id/nameOfProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:height="24dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="top"
+        android:text="@string/action"
+        android:textColor="@color/second_white"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/round_image"
+        app:layout_constraintStart_toStartOf="@+id/round_image"
+        app:layout_constraintTop_toBottomOf="@id/round_image" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
