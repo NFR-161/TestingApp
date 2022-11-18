@@ -41,4 +41,9 @@
     <string name="subscriptions">SUBSCRIPTIONS</string>
     <string name="mutually">MUTUALLY</string>
 
+    <string name="search">Поиск товаров</string>
+
+    <string name="action">Акции</string>
+
+
 </resources>

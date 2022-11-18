@@ -97,4 +97,12 @@
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back</item>
     </style>
 
+
+    <style name="Theme.HintColor" parent="android:Theme.Holo">
+        <item name="android:textColorHint">#989898</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:textCursorDrawable">@drawable/ic_cursor</item>
+    </style>
 </resources>

@@ -31,8 +31,8 @@ class TabsAdapter(val context: Context) :
     }
 
     override fun onBindViewHolder(holder: TempAdapterHolder, position: Int) {
-
         val userItem = getItem(position)
+
         launchGlide(holder, userItem.picUrl)
         holder.tvNameOfUser.text = userItem.name
         changeStateEnabled(holder, userItem)

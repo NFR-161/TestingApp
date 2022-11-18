@@ -40,6 +40,9 @@ class AccountFragment : Fragment() {
         binding.BtPeople.setOnClickListener {
             view.findNavController().navigate(R.id.action_accountFragment_to_peopleFragment2)
         }
+        binding.BtQuestion.setOnClickListener {
+            view.findNavController().navigate(R.id.action_accountFragment_to_pharmacyFragment)
+        }
     }
 
     private fun fillProfileData() {

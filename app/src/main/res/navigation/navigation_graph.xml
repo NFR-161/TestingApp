@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
     app:startDestination="@id/accountFragment">
     <fragment
@@ -10,9 +11,17 @@
         <action
             android:id="@+id/action_accountFragment_to_peopleFragment2"
             app:destination="@id/peopleFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_pharmacyFragment"
+            app:destination="@id/pharmacyFragment" />
     </fragment>
     <fragment
         android:id="@+id/peopleFragment"
         android:name="com.exampleone.testingapp.presentation.fragments.PeopleFragment"
         android:label="PeopleFragment" />
+    <fragment
+        android:id="@+id/pharmacyFragment"
+        android:name="com.exampleone.testingapp.presentation.fragments.PharmacyFragment"
+        android:label="fragment_pharmacy"
+        tools:layout="@layout/fragment_pharmacy" />
 </navigation>
