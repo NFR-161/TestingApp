@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.FragmentPeopleBinding
@@ -60,5 +61,6 @@ class PharmacyFragment : Fragment() {
         val indicator: CircleIndicator3 = binding.indicator
         indicator.setViewPager(binding.viewPager)
     }
+
 
 }

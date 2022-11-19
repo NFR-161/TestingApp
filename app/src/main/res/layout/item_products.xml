@@ -8,11 +8,15 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/round_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4.64dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/one"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/round_image" />
@@ -26,7 +30,7 @@
         android:fontFamily="@font/inter_regular"
         android:gravity="top"
         android:text="@string/action"
-        android:textColor="@color/second_white"
+        android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="@+id/round_image"
         app:layout_constraintStart_toStartOf="@+id/round_image"
