@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.exampleone.testingapp.databinding.ItemActionBinding
-import com.exampleone.testingapp.databinding.ItemsMomentsBinding
 
-class ActionAdapter : RecyclerView.Adapter<ActionAdapter.ActionViewHolder>() {
 
-     var listMoments = listOf(1, 2, 3, 4, 5, 6)
+class ActionAdapter(var list: List<Int>) : RecyclerView.Adapter<ActionAdapter.ActionViewHolder>() {
 
-    class ActionViewHolder(binding: ItemActionBinding) : RecyclerView.ViewHolder(binding.root)
+//    var listMoments = listOf(1, 2, 3, 4, 5, 6)
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -19,9 +19,16 @@ class ActionAdapter : RecyclerView.Adapter<ActionAdapter.ActionViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ActionViewHolder, position: Int) {
+        var item =  list[position]
+        holder.image.setBackgroundResource(item)
     }
 
     override fun getItemCount(): Int {
-        return listMoments.size
+//        return listMoments.size
+        return 6
+    }
+
+    class ActionViewHolder(var binding: ItemActionBinding) : RecyclerView.ViewHolder(binding.root){
+        var image =  binding.imageAction
     }
 }
