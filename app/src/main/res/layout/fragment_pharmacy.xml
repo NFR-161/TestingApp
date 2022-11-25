@@ -133,7 +133,6 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content">
 
             <androidx.viewpager2.widget.ViewPager2
@@ -141,7 +140,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
@@ -252,19 +251,49 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rc_action" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card1"
-                android:layout_width="200dp"
-                android:layout_height="500dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/arrow_all2" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="500dp"
-                android:layout_marginTop="10dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_recently_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recently_goods"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/item_recently" />
+
+
+            <ImageView
+                android:id="@+id/purple_iv"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/purple"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card1"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rc_recently_order" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Карта"
+                android:backgroundTint="@color/dark_grey"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:cornerRadius="50dp"
+                app:layout_constraintBottom_toBottomOf="@id/purple_iv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

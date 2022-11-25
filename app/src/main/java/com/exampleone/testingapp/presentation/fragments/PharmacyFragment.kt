@@ -6,16 +6,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import com.exampleone.testingapp.R
 
 import com.exampleone.testingapp.databinding.FragmentPharmacyBinding
 import com.exampleone.testingapp.presentation.fragments.product_fragments.adapter.ActionAdapter
 import com.exampleone.testingapp.presentation.fragments.product_fragments.adapter.ProductStateAdapter
+import com.exampleone.testingapp.presentation.fragments.product_fragments.adapter.RecentlyOrderAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import me.relex.circleindicator.CircleIndicator3
 
@@ -23,9 +26,12 @@ import me.relex.circleindicator.CircleIndicator3
 class PharmacyFragment : Fragment() {
 
     //    private val actionAdapter = ActionAdapter()
-    lateinit var actionAdapter: ActionAdapter
+    private lateinit var actionAdapter: ActionAdapter
+    lateinit var recentlyAdapter: RecentlyOrderAdapter
 
 //    var isAutoScroll = true
+
+
 
     //    private var coroutineScope = CoroutineScope(Dispatchers.Main)
     private val binding by lazy {
@@ -46,11 +52,10 @@ class PharmacyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initPager()
         initCircleIndicator()
-        initAdapters()
-        Log.d("MyLog", "onViewCreated")
+        initAdapterAction()
+        initAdapterRecently()
 
     }
 
@@ -73,7 +78,7 @@ class PharmacyFragment : Fragment() {
         indicator.setViewPager(binding.viewPager)
     }
 
-    private fun initAdapters() {
+    private fun initAdapterAction() {
         actionAdapter = ActionAdapter(initList())
         binding.rcAction.adapter = actionAdapter
 //        val manager = MyLinearLayoutManager(requireContext(), HORIZONTAL,false)
@@ -120,10 +125,22 @@ class PharmacyFragment : Fragment() {
             com.exampleone.testingapp.R.drawable.one,
             com.exampleone.testingapp.R.drawable.two,
             com.exampleone.testingapp.R.drawable.abstrakciya,
-            com.exampleone.testingapp.R.drawable.user_image,
-            com.exampleone.testingapp.R.drawable.turtle
+            com.exampleone.testingapp.R.drawable.black,
+            com.exampleone.testingapp.R.drawable.purple
         )
     }
+
+    private fun initAdapterRecently(){
+
+        recentlyAdapter = RecentlyOrderAdapter(initList())
+        binding.rcRecentlyOrder.adapter = recentlyAdapter
+        val manager = LinearLayoutManager(requireContext())
+        manager.orientation = HORIZONTAL
+        binding.rcRecentlyOrder.layoutManager = manager
+        binding.rcRecentlyOrder.animation = null
+    }
+
+
 
 //    private fun launchAutoscroll() {
 //        val interval = 2000

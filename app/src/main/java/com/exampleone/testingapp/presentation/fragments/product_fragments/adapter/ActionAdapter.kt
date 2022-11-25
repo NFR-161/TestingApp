@@ -24,8 +24,8 @@ class ActionAdapter(var list: List<Int>) : RecyclerView.Adapter<ActionAdapter.Ac
     }
 
     override fun getItemCount(): Int {
-//        return listMoments.size
-        return 6
+        return list.size
+
     }
 
     class ActionViewHolder(var binding: ItemActionBinding) : RecyclerView.ViewHolder(binding.root){

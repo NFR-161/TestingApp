@@ -1,18 +1,23 @@
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="160dp"
-    android:layout_height="160dp"
+    android:layout_width="170dp"
+    android:layout_height="170dp"
     android:layout_marginStart="16dp"
-    app:cardCornerRadius="8dp">
+    android:outlineProvider="none"
+    app:cardCornerRadius="15dp"
+    android:backgroundTint="#f7f7f7"
+    app:cardElevation="15dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageAction"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
+        android:layout_marginBottom="5dp"
         android:background="@drawable/two"
-        android:scaleType="center">
+        app:shapeAppearanceOverlay="@style/round_corner2">
 
-    </androidx.appcompat.widget.AppCompatImageView>
+    </com.google.android.material.imageview.ShapeableImageView>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
