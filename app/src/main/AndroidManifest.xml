@@ -4,6 +4,7 @@
     package="com.exampleone.testingapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:name=".di.UserApp"
@@ -27,6 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.fragments.CaptureAct"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/zxing_CaptureTheme"/>
+
     </application>
 
 </manifest>

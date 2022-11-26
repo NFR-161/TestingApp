@@ -1,12 +1,17 @@
 package com.exampleone.testingapp.presentation.fragments
 
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +19,14 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.exampleone.testingapp.R
-
 import com.exampleone.testingapp.databinding.FragmentPharmacyBinding
 import com.exampleone.testingapp.presentation.fragments.product_fragments.adapter.ActionAdapter
 import com.exampleone.testingapp.presentation.fragments.product_fragments.adapter.ProductStateAdapter
 import com.exampleone.testingapp.presentation.fragments.product_fragments.adapter.RecentlyOrderAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanIntentResult
+import com.journeyapps.barcodescanner.ScanOptions
 import me.relex.circleindicator.CircleIndicator3
 
 
@@ -30,7 +37,6 @@ class PharmacyFragment : Fragment() {
     lateinit var recentlyAdapter: RecentlyOrderAdapter
 
 //    var isAutoScroll = true
-
 
 
     //    private var coroutineScope = CoroutineScope(Dispatchers.Main)
@@ -46,7 +52,7 @@ class PharmacyFragment : Fragment() {
         val toolbar = binding.fragmentPharmToolbar
         (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
 
-        Log.d("MyLog", "onCreateView")
+
         return binding.root
     }
 
@@ -56,7 +62,26 @@ class PharmacyFragment : Fragment() {
         initCircleIndicator()
         initAdapterAction()
         initAdapterRecently()
+        speak()
 
+        binding.docScan.setOnClickListener {
+            scanCode()
+        }
+
+    }
+
+    var barcodeLauncher = registerForActivityResult(
+        ScanContract()
+    ) { result: ScanIntentResult ->
+        if (result.contents == null) {
+            Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(
+               requireContext(),
+                "Scanned: " + result.contents,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun initPager() {
@@ -105,32 +130,18 @@ class PharmacyFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("MyLog", "onResume")
-//        isAutoScroll = true
-//        launchAutoscroll()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("MyLog", "onPause")
-//        isAutoScroll = false
-    }
-
-
     private fun initList(): List<Int> {
         return listOf(
-            com.exampleone.testingapp.R.drawable.three,
-            com.exampleone.testingapp.R.drawable.one,
-            com.exampleone.testingapp.R.drawable.two,
-            com.exampleone.testingapp.R.drawable.abstrakciya,
-            com.exampleone.testingapp.R.drawable.black,
-            com.exampleone.testingapp.R.drawable.purple
+            R.drawable.three,
+            R.drawable.one,
+            R.drawable.two,
+            R.drawable.abstrakciya,
+            R.drawable.black,
+            R.drawable.purple
         )
     }
 
-    private fun initAdapterRecently(){
+    private fun initAdapterRecently() {
 
         recentlyAdapter = RecentlyOrderAdapter(initList())
         binding.rcRecentlyOrder.adapter = recentlyAdapter
@@ -139,6 +150,38 @@ class PharmacyFragment : Fragment() {
         binding.rcRecentlyOrder.layoutManager = manager
         binding.rcRecentlyOrder.animation = null
     }
+
+    private fun speak() {
+        binding.iconVoice.setOnClickListener {
+            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Start speaking")
+            startActivityForResult(intent, 100)
+        }
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.d("MyLog", "onActivityResult")
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            binding.searchView.setQuery(data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString(), false)
+            Log.d("MyLog", "ТЕКСТ: ${data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString()}")
+        }
+    }
+    private fun scanCode() {
+        val options = ScanOptions()
+        options.setPrompt("Увеличьте громкость чтобы включить вспышку")
+        options.setBeepEnabled(true)
+        options.setOrientationLocked(true)
+        options.captureActivity = CaptureAct::class.java
+        barcodeLauncher.launch(options)
+    }
+
+
+
 
 
 
@@ -167,6 +210,19 @@ class PharmacyFragment : Fragment() {
 //            }
 //        }
 //    }
+
+    override fun onResume() {
+        super.onResume()
+
+//        isAutoScroll = true
+//        launchAutoscroll()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+//        isAutoScroll = false
+    }
 }
 //}
 

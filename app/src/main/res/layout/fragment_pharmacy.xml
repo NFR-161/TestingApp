@@ -66,7 +66,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <ImageButton
-                                android:id="@+id/voice"
+                                android:id="@+id/icon_voice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="8dp"
@@ -78,10 +78,13 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.appcompat.widget.SearchView
+                                android:id="@+id/search_view"
                                 android:layout_width="230dp"
                                 android:layout_height="match_parent"
                                 app:iconifiedByDefault="false"
-                                app:layout_constraintEnd_toStartOf="@+id/voice"
+                                app:searchIcon="@drawable/ic_search"
+                                android:theme="@style/SearchViewStyle"
+                                app:layout_constraintEnd_toStartOf="@+id/icon_voice"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
