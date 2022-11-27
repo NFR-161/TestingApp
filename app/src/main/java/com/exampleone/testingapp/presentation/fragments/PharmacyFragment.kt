@@ -3,20 +3,18 @@ package com.exampleone.testingapp.presentation.fragments
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.SearchView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.*
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.FragmentPharmacyBinding
@@ -32,14 +30,13 @@ import me.relex.circleindicator.CircleIndicator3
 
 class PharmacyFragment : Fragment() {
 
-    //    private val actionAdapter = ActionAdapter()
+
     private lateinit var actionAdapter: ActionAdapter
     lateinit var recentlyAdapter: RecentlyOrderAdapter
 
 //    var isAutoScroll = true
-
-
     //    private var coroutineScope = CoroutineScope(Dispatchers.Main)
+
     private val binding by lazy {
         FragmentPharmacyBinding.inflate(layoutInflater)
     }
@@ -48,14 +45,8 @@ class PharmacyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val toolbar = binding.fragmentPharmToolbar
-        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
-
-
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPager()
@@ -67,6 +58,18 @@ class PharmacyFragment : Fragment() {
         binding.docScan.setOnClickListener {
             scanCode()
         }
+        binding.searchView.setOnClickListener {
+            view.findNavController().navigate(R.id.action_pharmacyFragment_to_searchResultFragment)
+        }
+    }
+
+    private fun initAdapterAction() {
+        actionAdapter = ActionAdapter(initList())
+        binding.rcAction.adapter = actionAdapter
+        binding.rcAction.animation = null
+        val customSnapHelper = CustomSnapHelper()
+        binding.rcAction.onFlingListener = null
+        customSnapHelper.attachToRecyclerView(binding.rcAction)
 
     }
 
@@ -77,7 +80,7 @@ class PharmacyFragment : Fragment() {
             Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(
-               requireContext(),
+                requireContext(),
                 "Scanned: " + result.contents,
                 Toast.LENGTH_LONG
             ).show()
@@ -86,6 +89,8 @@ class PharmacyFragment : Fragment() {
 
     private fun initPager() {
         binding.viewPager.adapter = ProductStateAdapter(requireActivity())
+        /* для того, чтобы бэкстэк работал нормально*/
+        binding.viewPager.isSaveEnabled = false
 
         val tabLayoutMediator = binding.tabLayout.let {
             binding.viewPager.let { it1 ->
@@ -101,32 +106,6 @@ class PharmacyFragment : Fragment() {
 
         val indicator: CircleIndicator3 = binding.indicator
         indicator.setViewPager(binding.viewPager)
-    }
-
-    private fun initAdapterAction() {
-        actionAdapter = ActionAdapter(initList())
-        binding.rcAction.adapter = actionAdapter
-//        val manager = MyLinearLayoutManager(requireContext(), HORIZONTAL,false)
-        val manager = LinearLayoutManager(requireContext())
-        manager.orientation = HORIZONTAL
-        binding.rcAction.layoutManager = manager
-        binding.rcAction.animation = null
-
-        val snapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.rcAction)
-
-        binding.rcAction.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (manager.findFirstCompletelyVisibleItemPosition() == 0
-                    || manager.findLastCompletelyVisibleItemPosition() == 5
-                ) {
-                    snapHelper.attachToRecyclerView(null)
-                } else {
-                    snapHelper.attachToRecyclerView(binding.rcAction)
-                }
-            }
-        })
     }
 
 
@@ -163,14 +142,24 @@ class PharmacyFragment : Fragment() {
         }
 
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         Log.d("MyLog", "onActivityResult")
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == RESULT_OK) {
-            binding.searchView.setQuery(data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString(), false)
-            Log.d("MyLog", "ТЕКСТ: ${data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString()}")
+            binding.searchView.setQuery(
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString(),
+                false
+            )
+            Log.d(
+                "MyLog",
+                "ТЕКСТ: ${
+                    data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString()
+                }"
+            )
         }
     }
+
     private fun scanCode() {
         val options = ScanOptions()
         options.setPrompt("Увеличьте громкость чтобы включить вспышку")
@@ -179,11 +168,6 @@ class PharmacyFragment : Fragment() {
         options.captureActivity = CaptureAct::class.java
         barcodeLauncher.launch(options)
     }
-
-
-
-
-
 
 //    private fun launchAutoscroll() {
 //        val interval = 2000
@@ -213,15 +197,15 @@ class PharmacyFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
 //        isAutoScroll = true
 //        launchAutoscroll()
+
     }
 
     override fun onPause() {
         super.onPause()
-
 //        isAutoScroll = false
+
     }
 }
 //}

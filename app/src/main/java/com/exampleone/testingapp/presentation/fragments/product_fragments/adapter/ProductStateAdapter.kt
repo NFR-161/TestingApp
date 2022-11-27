@@ -28,4 +28,5 @@ class ProductStateAdapter(fragmentActivity: FragmentActivity): FragmentStateAdap
                 }
             }
         }
+
     }
