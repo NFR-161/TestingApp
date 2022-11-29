@@ -3,18 +3,19 @@ package com.exampleone.testingapp.presentation.fragments
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.speech.RecognizerIntent
+import android.text.InputType
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.*
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.exampleone.testingapp.R
 import com.exampleone.testingapp.databinding.FragmentPharmacyBinding
@@ -29,13 +30,8 @@ import me.relex.circleindicator.CircleIndicator3
 
 
 class PharmacyFragment : Fragment() {
-
-
     private lateinit var actionAdapter: ActionAdapter
     lateinit var recentlyAdapter: RecentlyOrderAdapter
-
-//    var isAutoScroll = true
-    //    private var coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private val binding by lazy {
         FragmentPharmacyBinding.inflate(layoutInflater)
@@ -47,6 +43,7 @@ class PharmacyFragment : Fragment() {
     ): View? {
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPager()
@@ -54,26 +51,56 @@ class PharmacyFragment : Fragment() {
         initAdapterAction()
         initAdapterRecently()
         speak()
+        launchSearchFrag()
+        launchSearchFragIfMoreChar()
 
         binding.docScan.setOnClickListener {
             scanCode()
         }
-        binding.searchView.setOnClickListener {
-            view.findNavController().navigate(R.id.action_pharmacyFragment_to_searchResultFragment)
-        }
+
+    }
+
+    private fun launchSearchFragIfMoreChar() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    if (newText.isNotEmpty()) {
+                        findNavController().navigate(R.id.action_pharmacyFragment_to_searchResultFragment)
+                    }
+                }
+                return false
+            }
+        })
+    }
+
+    private fun launchSearchFrag() {
+        binding.searchView.inputType = InputType.TYPE_NULL
+        binding.searchView.setOnQueryTextFocusChangeListener(object : OnFocusChangeListener {
+            override fun onFocusChange(view: View?, isActive: Boolean) {
+                if (isActive) {
+                    findNavController().navigate(R.id.action_pharmacyFragment_to_searchResultFragment)
+
+                }
+            }
+        })
     }
 
     private fun initAdapterAction() {
-        actionAdapter = ActionAdapter(initList())
-        binding.rcAction.adapter = actionAdapter
-        binding.rcAction.animation = null
-        val customSnapHelper = CustomSnapHelper()
-        binding.rcAction.onFlingListener = null
-        customSnapHelper.attachToRecyclerView(binding.rcAction)
-
+        binding.apply {
+            actionAdapter = ActionAdapter(initList())
+            rcAction.adapter = actionAdapter
+            rcAction.animation = null
+            val customSnapHelper = CustomSnapHelper()
+            rcAction.onFlingListener = null
+            customSnapHelper.attachToRecyclerView(rcAction)
+        }
     }
 
-    var barcodeLauncher = registerForActivityResult(
+    private var barcodeLauncher = registerForActivityResult(
         ScanContract()
     ) { result: ScanIntentResult ->
         if (result.contents == null) {
@@ -89,7 +116,7 @@ class PharmacyFragment : Fragment() {
 
     private fun initPager() {
         binding.viewPager.adapter = ProductStateAdapter(requireActivity())
-        /* для того, чтобы бэкстэк работал нормально*/
+        /* для того, чтобы pop бэкстэк работал нормально*/
         binding.viewPager.isSaveEnabled = false
 
         val tabLayoutMediator = binding.tabLayout.let {
@@ -107,7 +134,6 @@ class PharmacyFragment : Fragment() {
         val indicator: CircleIndicator3 = binding.indicator
         indicator.setViewPager(binding.viewPager)
     }
-
 
     private fun initList(): List<Int> {
         return listOf(
@@ -140,11 +166,9 @@ class PharmacyFragment : Fragment() {
             intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Start speaking")
             startActivityForResult(intent, 100)
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.d("MyLog", "onActivityResult")
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == RESULT_OK) {
             binding.searchView.setQuery(
@@ -168,46 +192,7 @@ class PharmacyFragment : Fragment() {
         options.captureActivity = CaptureAct::class.java
         barcodeLauncher.launch(options)
     }
-
-//    private fun launchAutoscroll() {
-//        val interval = 2000
-//        var count = 0
-//        binding.apply {
-//            coroutineScope.launch {
-//                while (isAutoScroll) {
-//                    for (i in count until actionAdapter.itemCount) {
-//                        rcAction.smoothScrollToPosition(count)
-//                        Log.d("MyLog", "1 count: $count")
-//                        count++
-//                        delay(interval.toLong())
-//
-//                        if (count >= actionAdapter.itemCount) {
-//                            while (count > 0) {
-//                                rcAction.smoothScrollToPosition(count)
-//                                Log.d("MyLog", "2 count: $count")
-//                                count--
-//                                delay(interval.toLong())
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-
-    override fun onResume() {
-        super.onResume()
-//        isAutoScroll = true
-//        launchAutoscroll()
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-//        isAutoScroll = false
-
-    }
 }
-//}
+
 
 

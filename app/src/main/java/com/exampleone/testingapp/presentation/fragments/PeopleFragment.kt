@@ -73,8 +73,8 @@ class PeopleFragment : Fragment() {
     }
 
     private fun test() {
-        val searchView =
-            binding.fragmentPeopleToolbar.menu.findItem(R.id.search).actionView as SearchView
+        val searchView = binding.fragmentPeopleToolbar.menu.findItem(R.id.search).actionView as SearchView
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false

@@ -81,15 +81,15 @@
                                 android:id="@+id/search_view"
                                 android:layout_width="230dp"
                                 android:layout_height="match_parent"
-                                app:iconifiedByDefault="false"
-                                app:searchIcon="@drawable/ic_search"
                                 android:theme="@style/SearchViewStyle"
+                                app:iconifiedByDefault="false"
                                 app:layout_constraintEnd_toStartOf="@+id/icon_voice"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:queryBackground="@android:color/transparent"
-                                app:queryHint="@string/search" />
+                                app:queryHint="@string/search"
+                                app:searchIcon="@drawable/ic_search" />
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -118,11 +118,11 @@
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:elevation="4dp"
         android:background="@drawable/ic_shadow"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/nested"/>
+        app:layout_constraintTop_toTopOf="@id/nested" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested"
@@ -143,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
@@ -210,9 +210,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:clipToPadding="false"
-                android:scrollbars="none"
                 android:orientation="horizontal"
                 android:paddingEnd="16dp"
+                android:scrollbars="none"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/action"
                 tools:listitem="@layout/item_action" />
@@ -291,8 +291,8 @@
                 android:id="@+id/bt_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Карта"
                 android:backgroundTint="@color/dark_grey"
+                android:text="Карта"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:cornerRadius="50dp"
