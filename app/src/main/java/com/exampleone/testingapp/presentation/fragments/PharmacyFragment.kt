@@ -175,12 +175,6 @@ class PharmacyFragment : Fragment() {
                 data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString(),
                 false
             )
-            Log.d(
-                "MyLog",
-                "ТЕКСТ: ${
-                    data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString()
-                }"
-            )
         }
     }
 

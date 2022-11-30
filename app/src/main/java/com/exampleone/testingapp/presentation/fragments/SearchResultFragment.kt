@@ -1,9 +1,13 @@
 package com.exampleone.testingapp.presentation.fragments
 
 import android.R
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,8 +42,33 @@ class SearchResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         removeVoiceAndBar()
+        speak()
+
 
     }
+    private fun speak() {
+        binding.iconVoice.setOnClickListener {
+            Log.d("MyLog"," binding.iconVoice.setOnClickListener ")
+            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Start speaking")
+            startActivityForResult(intent, 100)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
+            binding.searchView.setQuery(
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0).toString(),
+                false
+            )
+        }
+    }
+
 
     private fun removeVoiceAndBar() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
