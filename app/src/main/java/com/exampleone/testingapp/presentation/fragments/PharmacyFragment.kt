@@ -67,9 +67,12 @@ class PharmacyFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                val parameters = Bundle()
                 if (newText != null) {
+                    parameters.putString("key",newText)
                     if (newText.isNotEmpty()) {
-                        findNavController().navigate(R.id.action_pharmacyFragment_to_searchResultFragment)
+                        findNavController().navigate(R.id.action_pharmacyFragment_to_searchResultFragment,parameters)
+                        binding.searchView.setQuery("",false)
                     }
                 }
                 return false

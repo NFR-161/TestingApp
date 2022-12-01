@@ -1,13 +1,11 @@
 package com.exampleone.testingapp.presentation.fragments
 
-import android.R
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.text.InputType
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +29,6 @@ class SearchResultFragment : Fragment() {
     ): View? {
 
         showKeyPad()
-
         binding.arrowBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -39,16 +36,29 @@ class SearchResultFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         removeVoiceAndBar()
         speak()
+        getTextFromPharmFrag()
+    }
 
+
+    private fun getTextFromPharmFrag() {
+        arguments?.let {
+            val text: String? = requireArguments().getString("key")
+            binding.searchView.setQuery(text.toString(), false)
+        }
 
     }
+
     private fun speak() {
         binding.iconVoice.setOnClickListener {
-            Log.d("MyLog"," binding.iconVoice.setOnClickListener ")
+
+            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            imm!!.hideSoftInputFromWindow(requireView().windowToken, 0)
+
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             intent.putExtra(
                 RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -109,16 +119,15 @@ class SearchResultFragment : Fragment() {
         binding.searchView.setOnQueryTextFocusChangeListener(object : View.OnFocusChangeListener {
             override fun onFocusChange(view: View?, boolean: Boolean) {
                 if (boolean) {
-                    val imm =
-                        requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
                     imm!!.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
                 } else {
-                    val imm =
-                        requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
                     imm!!.hideSoftInputFromWindow(view!!.windowToken, 0)
                 }
             }
         })
 
     }
+
 }
